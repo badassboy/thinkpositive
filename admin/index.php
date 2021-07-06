@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿<?php
+include_once 'lib/constants.php';
+?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Dream</title>
+    <title>Dashbord | <?=tp_app_admin?></title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -25,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Dream</a>
+                <a class="navbar-brand" href="index.html"><?=tp_app_admin?></a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -43,14 +45,36 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Dashboard <small>Summary of your App</small>
+                            Dashboard 
                         </h1>
                     </div>
                 </div>
                 <!-- /. ROW  -->
 
                 <div class="row">
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-green">
+                            <div class="panel-body">
+                                <i class="fa fa-users fa-5x"></i>
+                                <h3>0</h3>
+                            </div>
+                            <div class="panel-footer back-footer-green">
+                                System Users
+                            </div>
+                        </div>
+                    </div>
                     
+                    <div class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="panel panel-primary text-center no-boder bg-color-red">
+                            <div class="panel-body">
+                                <i class="fa fa-envelope fa-5x"></i>
+                                <h3>0</h3>
+                            </div>
+                            <div class="panel-footer back-footer-red">
+                                New Messages
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /. ROW  -->

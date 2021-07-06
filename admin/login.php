@@ -31,10 +31,6 @@ include_once 'lib/login.php';
     </script>
 
     <script>
-        // $.notify("Access granted", "success");
-        // $.notify("Do not press this button", "info");
-        // $.notify("Warning: Self-destruct in 3.. 2..", "warn");
-        // $.notify("BOOM!", "error");
         function checkform() {
             var email = document.getElementById('email').value;
             var pass = document.getElementById('pass').value;

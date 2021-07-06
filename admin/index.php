@@ -89,13 +89,14 @@ include_once 'lib/constants.php';
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Js -->
-    <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="js/notify.js"></script>
+
+    <script>
+        <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>
+    </script>
 
 
 </body>

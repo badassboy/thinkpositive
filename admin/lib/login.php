@@ -20,7 +20,7 @@ if(isset($_SESSION['thinkadmin']) && $_SESSION['thinkadmin'] === true){
     $t = $db->get(tp_users);
     $goal = count($t);
     if ($goal === 1){
-        header('Location: login.php');exit;
+        header('Location: index.php');exit;
     }else{
         //set session
         unset($_SESSION['thinkadmin']);

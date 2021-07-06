@@ -1,117 +1,79 @@
-<?php
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-require_once("../functions.php");
-$ch = new Application();
-
-$info = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
-	$email = trim($_POST['email']);
-	$pwd = trim($_POST['pwd']);
-	
-	if (!empty($email) || !empty($pwd)) {
-
-		$user = $ch->loginAdmin($email,$pwd);
-		if ($user) {
-			$_SESSION['email']=$email;
-			$_SESSION['adimn_pass']=$pwd;
-			header("Location: homepage.php");
-			// return;
-		}else{
-			$info = "login failed";
-		}
-
-	}else {
-
-		$info = "fields are required";	
-		
-		
-
-	}
-}
-
-
-
-
-
-
-?> 
-
-
- <!DOCTYPE html>
-<html lang="en">
 <head>
-
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-
-	<title></title>
-
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/admin-index.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free Bootstrap Admin Template : Dream</title>
+    <!-- Bootstrap Styles-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
+
 <body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Dream</a>
+            </div>
 
-<!-- login page here -->
-	<div class="container-fluid auth_page">
-
-		<!-- <div class="container-fluid header">
-
-			<h1>ADMIN LOGIN</h1>
-		
-		</div> -->
-
-			<h3>LOGIN HERE</h3>
-			    <div class="second">
-			    	
-			    	<form method="post" action="index.php">
-			    		<?php
-
-			    		if (isset($info)) {
-			    			echo $info;
-			    		}
-
-			    		?>
-			    	  <div class="form-group">
-			    	      <label for="exampleInputEmail1">Email address</label>
-			    	      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-			    	      
-			    	    </div>
-
-			    	  <div class="form-group">
-			    	    <label for="exampleInputPassword1">Password</label>
-			    	    <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password" required="required">
-			    	  </div>
-
-			    	  
-
-			    	 <input type="submit" name="login" class="default" value="Login">
-
-			    	  <br>
-			    	  <p class="next">Not Registered?<a href="admin-signup.php" style="color: #009933;">Click Here</a></p>
-			    	</form>
-			    </div>
-
-			
+            <ul class="nav navbar-top-links navbar-right">
+                <?php include_once 'lib/user.php'?>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+            <?php include_once'lib/navMenu.php' ?>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
 
 
-		
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                            Dashboard <small>Summary of your App</small>
+                        </h1>
+                    </div>
+                </div>
+                <!-- /. ROW  -->
 
+                <div class="row">
+                    
 
-	</div>
+                </div>
+                <!-- /. ROW  -->
+                <footer>
+                    <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez</a></p>
+                </footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Js -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>
 
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

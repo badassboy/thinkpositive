@@ -15,8 +15,8 @@ include_once 'lib/login.php';
     <div class="login-page">
         <div class="form">
             <form class="login-form" method="post" onSubmit="return checkform()">
-                <input type="email" placeholder="Email Address" id="email" name="user_email" />
-                <input type="password" placeholder="Password" id="pass" name="user_pass" />
+                <input type="email" placeholder="Email Address" id="email" name="user_email" value="<?=$user_id?>"/>
+                <input type="password" placeholder="Password" id="pass" name="user_pass" value="<?=$user_pass?>"/>
                 <button>login</button>
                 <p class="message">Not registered? <a href="register.php">Register</a></p>
             </form>
@@ -25,6 +25,11 @@ include_once 'lib/login.php';
     <script src="js/main.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/notify.js"></script>
+
+    <script>
+        <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>
+    </script>
+
     <script>
         // $.notify("Access granted", "success");
         // $.notify("Do not press this button", "info");

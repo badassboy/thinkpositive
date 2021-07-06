@@ -5,6 +5,8 @@ require_once 'MysqliDb.php';
 session_start();
 
 $error = [];
+$user_id = '';
+$user_pass = '';
 
 function hook_data($h){
 	$_POST[$h] ??= '';
@@ -30,29 +32,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	$user_id = hook_data('user_email');
     $user_pass = hook_data('user_pass');
-    $user_passes = base64_encode(base64_encode($user_pass));
     
     $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
     $db->where('user_email', $user_id);
-    $db->where('user_pass', $user_passes);
     $t = $db->get(tp_users);
     $goal = count($t);
 
     if ($goal === 1 && $t[0]['user_status'] === 1) {
+        $user_passes = password_verify($user_pass, $t[0]['user_pass']);
 
-        $id = $user_id; 
-        $level = $t[0]['user_status'];
+        if($user_passes){
+            $id = $user_id; 
+            $level = $t[0]['user_status'];
 
-        //Set Session
-        $_SESSION['thinkadmin'] = true;
+            //Set Session
+            $_SESSION['thinkadmin'] = true;
 
-        // reload the page
-        $_SESSION['think_id'] = $id;
-        $_SESSION['think_lvl'] = $level;
-        $_SESSION['think_mgs'] = '$.notify("Access granted", "success");';
-        header('Location: index.php');exit;
+            // reload the page
+            $_SESSION['think_id'] = $id;
+            $_SESSION['think_lvl'] = $level;
+            $_SESSION['think_mgs'] = '$.notify("Access granted", "success");';
+            header('Location: index.php');exit;
+        } else {
+            // login failed save error to a session
+            $_SESSION['think_mgs'] = '$.notify("Wrong Credentials Entered!", "error");';
+        }
     } else {
         // login failed save error to a session
-        $_SESSION['think_mgs'] = false;
+        $_SESSION['think_mgs'] = '$.notify("Wrong Credentials Entered!", "error");';
     }
 }

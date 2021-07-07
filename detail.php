@@ -12,35 +12,16 @@
     </div>
     <!-- Page Header Start -->
 
-
+    <?php require_once 'engine/details.php';?>
     <!-- Blog Start -->
     <div class="container-fluid py-6 px-5">
         <div class="row g-5">
             <div class="col-lg-8">
                 <!-- Blog Detail Start -->
                 <div class="mb-5">
-                    <img class="img-fluid w-100 rounded mb-5" src="img/blog-2.jpg" alt="">
-                    <h1 class="text-uppercase mb-4">Diam dolor duo ipsum clita sed lorem tempor. Clita kasd diam justo diam
-                        lorem sed amet sed rebum eos.</h1>
-                    <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
-                        magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
-                        amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
-                        sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
-                        aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
-                        sit stet no diam kasd vero.</p>
-                    <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores
-                        vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit
-                        nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore
-                        ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et,
-                        clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat
-                        justo dolore sit invidunt.</p>
-                    <p>Diam dolor est labore duo invidunt ipsum clita et, sed et lorem voluptua tempor
-                        invidunt at est sanctus sanctus. Clita dolores sit kasd diam takimata justo diam
-                        lorem sed. Magna amet sed rebum eos. Clita no magna no dolor erat diam tempor
-                        rebum consetetur, sanctus labore sed nonumy diam lorem amet eirmod. No at tempor
-                        sea diam kasd, takimata ea nonumy elitr sadipscing gubergren erat. Gubergren at
-                        lorem invidunt sadipscing rebum sit amet ut ut, voluptua diam dolores at
-                        sadipscing stet. Clita dolor amet dolor ipsum vero ea ea eos.</p>
+                    <img class="img-fluid w-100 rounded mb-5" src="img/<?=$blog['blog_img']?>" alt="">
+                    <h1 class="text-uppercase mb-4"><?=$blog['blog_subj']?></h1>
+                    <p><?=$blog['blog_content']?></p>
                 </div>
                 <!-- Blog Detail End -->
 
@@ -208,67 +189,7 @@
 
 
     <!-- Footer Start -->
-    <div class="footer container-fluid position-relative bg-dark bg-light-radial text-white-50 py-6 px-5">
-        <div class="row g-5">
-            <div class="col-lg-6 pe-lg-5">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 display-4 text-uppercase text-white"><i class="bi bi-building text-primary me-2"></i>WEBUILD</h1>
-                </a>
-                <p>Aliquyam sed elitr elitr erat sed diam ipsum eirmod eos lorem nonumy. Tempor sea ipsum diam  sed clita dolore eos dolores magna erat dolore sed stet justo et dolor.</p>
-                <p><i class="fa fa-map-marker-alt me-2"></i>123 Street, New York, USA</p>
-                <p><i class="fa fa-phone-alt me-2"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope me-2"></i>info@example.com</p>
-                <div class="d-flex justify-content-start mt-4">
-                    <a class="btn btn-lg btn-primary btn-lg-square rounded-0 me-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-primary btn-lg-square rounded-0 me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-primary btn-lg-square rounded-0 me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-primary btn-lg-square rounded-0" href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-6 ps-lg-5">
-                <div class="row g-5">
-                    <div class="col-sm-6">
-                        <h4 class="text-white text-uppercase mb-4">Quick Links</h4>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
-                            <a class="text-white-50" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <h4 class="text-white text-uppercase mb-4">Popular Links</h4>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                            <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
-                            <a class="text-white-50" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <h4 class="text-white text-uppercase mb-4">Newsletter</h4>
-                        <div class="w-100">
-                            <div class="input-group">
-                                <input type="text" class="form-control border-light" style="padding: 20px 30px;" placeholder="Your Email Address"><button class="btn btn-primary px-4">Sign Up</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark bg-light-radial text-white border-top border-primary px-0">
-        <div class="d-flex flex-column flex-md-row justify-content-between">
-            <div class="py-4 px-5 text-center text-md-start">
-                <p class="mb-0">&copy; <a class="text-primary" href="#">Your Site Name</a>. All Rights Reserved.</p>
-            </div>
-            <div class="py-4 px-5 bg-primary footer-shape position-relative text-center text-md-end">
-                <p class="mb-0">Designed by <a class="text-dark" href="https://htmlcodex.com">HTML Codex</a></p>
-            </div>
-        </div>
-    </div>
+    <?php include("footer.php"); ?>
     <!-- Footer End -->
 
 

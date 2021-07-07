@@ -15,8 +15,8 @@ function nav_active($n){
     <meta charset="utf-8">
     <title><?=appname?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <meta content="ThinkPositive" name="keywords">
+    <meta content="ThinkPositive" name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">

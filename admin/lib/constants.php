@@ -9,7 +9,10 @@ define('tp_pass','');
 //Name of Host
 define('tp_name','think.db');
 
+define('appname','thinkPositive');
+
 //Admin Name
 define('tp_app_admin','thinkADMIN');
 //Database Tables
-define('tp_users','tp_sys_user');
+define('users','tp_user');
+define('blogs','tp_blog');

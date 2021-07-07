@@ -1,9 +1,19 @@
-<!DOCTYPE html>
+<?php
+require_once 'admin/lib/constants.php';
+
+function nav_active($n){
+    $s = substr($_SERVER['PHP_SELF'], 1, 4);
+    if($n == $s){
+        return 'active';
+    }
+}
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>WEBUILD -  Construction Company Website Template Free</title>
+    <title><?=appname?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -29,6 +39,12 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .navbar-brand img {
+            margin-top: -8%;
+        }
+    </style>
 </head>
 
 <body>
@@ -73,7 +89,7 @@
             <a href="index.php" class="navbar-brand">
                 <!-- <h1 class="m-0 display-4 text-uppercase text-white">
                     <i class="bi bi-building text-primary me-2"></i>WEBUILD</h1> -->
-                <img src="img/logo2.jpg" width="100" height="100" alt="logo">
+                <img src="img/logo12.png" width="140" alt="logo">
                 <!-- <img src="img/logo2.jpg" class="img-fluid" alt="Responsive image"> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -81,10 +97,11 @@
             </button>
             <div class="collapse navbar-collapse"  id="navbarCollapse">
                 <div class="navbar-nav justify-content-center py-0">
-                    <a href="index.php" class="nav-item nav-link active">Home</a>
-                    <a href="about.php" class="nav-item nav-link">About</a>
-                    <a href="service.php" class="nav-item nav-link">Service</a>
-                    <a href="blog.php" class="nav-item nav-link">Blog</a>
+                    <a href="index.php" class="nav-item nav-link <?=nav_active('inde')?>">Home</a>
+                    <a href="about.php" class="nav-item nav-link <?=nav_active('abou')?>">About</a>
+                    <a href="service.php" class="nav-item nav-link <?=nav_active('serv')?>">Service</a>
+                    <a href="blog.php" class="nav-item nav-link <?=nav_active('blog')?>">Blog</a>
+                    <a href="contact.php" class="nav-item nav-link <?=nav_active('cont')?>">Contact</a>
 
                    <!--  <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -97,7 +114,6 @@
                         </div>
                     </div> -->
 
-                    <a href="contact.php" class="nav-item nav-link">Contact</a>
                     <!-- <a href="" class="nav-item nav-link bg-primary text-white px-5 ms-3 d-none d-lg-block">Get A Quote <i class="bi bi-arrow-right"></i></a> -->
                 </div>
             </div>

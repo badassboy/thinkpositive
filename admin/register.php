@@ -10,7 +10,7 @@ include_once 'lib/register.php';
     <link rel="stylesheet" href="css/main.css">
     <script src="js/main.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
-    <title>Login | Admin</title>
+    <title>Register | <?=tp_app_admin?></title>
 </head>
 
 <body>

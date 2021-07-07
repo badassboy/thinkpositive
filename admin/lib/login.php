@@ -4,13 +4,16 @@ require_once 'MysqliDb.php';
 
 session_start();
 
-$error = [];
 $user_id = '';
 $user_pass = '';
 
 function hook_data($h){
-	$_POST[$h] ??= '';
-	return htmlspecialchars(stripslashes($_POST[$h]));
+	if(isset($_POST[$h])){
+        $g = $_POST[$h];
+    }else{
+        $g = '';
+    }
+	return htmlspecialchars(stripslashes($g));
 }
 
 if(isset($_SESSION['thinkadmin']) && $_SESSION['thinkadmin'] === true){
@@ -51,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             // reload the page
             $_SESSION['think_id'] = $id;
             $_SESSION['think_lvl'] = $level;
-            $_SESSION['think_mgs'] = '$.notify("Access granted", "success");';
+            $_SESSION['think_mgs'] = '$.notify("Welcome '.$t[0]['user_fname'].'!", "success");';
             header('Location: index.php');exit;
         } else {
             // login failed save error to a session

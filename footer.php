@@ -2,7 +2,7 @@
     <div class="row g-5">
         <div class="col-lg-6 pe-lg-5">
             <a href="index.html" class="navbar-brand">
-                <img src="img/logo.jpg" width="100" height="100" alt="logo">
+                <img src="img/logo12.png" width="150" alt="logo">
 
             </a>
 

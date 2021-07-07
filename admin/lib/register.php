@@ -5,8 +5,12 @@ require_once 'MysqliDb.php';
 session_start();
 
 function hook_data($h){
-	$_POST[$h] ??= '';
-	return htmlspecialchars(stripslashes($_POST[$h]));
+	if(isset($_POST[$h])){
+        $g = $_POST[$h];
+    }else{
+        $g = '';
+    }
+	return htmlspecialchars(stripslashes($g));
 }
 
 $user_id = '';

@@ -1,5 +1,7 @@
 ﻿<?php
 include_once 'lib/constants.php';
+include_once 'lib/check.php';
+
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 

@@ -16,3 +16,4 @@ define('tp_app_admin','thinkADMIN');
 //Database Tables
 define('users','tp_user');
 define('blogs','tp_blog');
+define('messages','tp_message');

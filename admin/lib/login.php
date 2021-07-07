@@ -20,7 +20,7 @@ if(isset($_SESSION['thinkadmin']) && $_SESSION['thinkadmin'] === true){
     $id = $_SESSION['think_id'];
     $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
     $db->where('user_email', $id);
-    $t = $db->get(tp_users);
+    $t = $db->get(users);
     $goal = count($t);
     if ($goal === 1){
         header('Location: index.php');exit;
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
     $db->where('user_email', $user_id);
-    $t = $db->get(tp_users);
+    $t = $db->get(users);
     $goal = count($t);
 
     if ($goal === 1 && $t[0]['user_status'] === 1) {

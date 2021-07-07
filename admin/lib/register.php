@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
     $db->where('user_email', $user_id);
-    $v = $db->get(tp_users);
+    $v = $db->get(users);
     $b = count($v);
     if($b > 0){
         // registration failed save error to a session
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             'date_created' => date('Y-m-d h:i:s')
         );
         $dbs = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
-        $dbs->insert(tp_users, $iq);
+        $dbs->insert(users, $iq);
 
         //Set Session
         $_SESSION['thinkadmin'] = true;

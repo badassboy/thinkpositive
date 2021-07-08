@@ -1,6 +1,38 @@
 ﻿<?php
 include_once 'lib/constants.php';
 include_once 'lib/check.php';
+require_once 'lib/MysqliDb.php';
+
+function hook_data($h){
+	if(isset($_POST[$h])){
+        $g = $_POST[$h];
+    }else{
+        $g = '';
+    }
+	return htmlspecialchars(stripslashes($g));
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
+    $p = $_GET['post'];
+    $x1 = hook_data('subject');
+    $x2 = $_POST['content'];
+    
+    //print_r($_POST); exit;
+    $data = array(
+        'blog_subj' => $x1,
+        'blog_content' => $x2
+    );
+    $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+    $db->where('row_key', $p);
+    $db->update(blogs, $data);
+}
+
+if(isset($_GET['post'])){
+    $p = $_GET['post'];
+    $eg = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+    $eg->where('row_key',$p);
+    $rap = $eg->getOne(blogs);
+}
 
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -62,14 +94,14 @@ include_once 'lib/check.php';
                                 Edit Blog
                             </div>
                             <div class="panel-body">
-                                <form class="form-inline">
+                                <form class="form-inline" method="post">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     Subject
                                                 </span>
-                                                <input type="text" class="form-control" aria-label="...">
+                                                <input type="text" class="form-control" name="subject" value="<?=$rap['blog_subj']?>" aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6">
@@ -77,7 +109,7 @@ include_once 'lib/check.php';
                                                 <span class="input-group-addon">
                                                     Date
                                                 </span>
-                                                <input type="text" class="form-control" aria-label="...">
+                                                <input type="text" class="form-control" name="date" value="<?=$rap['date_created']?>" readonly aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -88,7 +120,7 @@ include_once 'lib/check.php';
                                                 <span class="input-group-addon">
                                                     Content
                                                 </span>
-                                                <textarea name="blog_content" id="editor"></textarea>
+                                                <textarea id="editor" name="content"><?=$rap['blog_content']?></textarea>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-12 -->
                                         <div class="col-lg-12">
@@ -96,7 +128,7 @@ include_once 'lib/check.php';
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="input-group">
-                                                <input type="submit" class="form-control btn btn-primary" value="Save">
+                                                <input type="submit" class="form-control btn btn-primary" name="savei" value="Save">
                                             </div><!-- /input-group -->
                                         </div>
                                     </div><!-- /.row -->

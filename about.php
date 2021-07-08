@@ -150,62 +150,6 @@
     <!-- About End -->
 
 
-    <!-- Appointment Start -->
-    <div class="container-fluid py-6 px-5">
-            <div class="row gx-5">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-
-                    <div class="mb-4">
-                        <h2 class="display-7 text-uppercase mb-4">Request A Call Back</h2>
-                    </div>
-                    <p class="mb-5">We are committed to provide the highest level of service by being solution-base and always
-                finding a way to meet our clients’ needs.</p>
-                    <a class="btn btn-primary py-3 px-5" href="">Get A Quote</a>
-                </div>
-
-                <div class="col-lg-8">
-                    <div class="bg-white text-center p-5">
-
-                       
-
-                        <form method="post" action="">
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="date" id="date" data-target-input="nearest">
-                                        <input type="text"
-                                            class="form-control bg-light border-0 datetimepicker-input"
-                                            placeholder="Call Back Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="time" id="time" data-target-input="nearest">
-                                        <input type="text"
-                                            class="form-control bg-light border-0 datetimepicker-input"
-                                            placeholder="Call Back Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit Request</button>
-                                </div>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-    </div>
-    <!-- Appointment End -->
-
-
     <!-- Team Start -->
     <!-- <div class="container-fluid py-6 px-5">
         <div class="text-center mx-auto mb-5" style="max-width: 600px;">

@@ -9,7 +9,7 @@
             <p class="foot-text">We are committed to provide the highest level of service by being solution-base and
                 always finding a way to meet our clients’ needs.</p>
             <p><i class="fa fa-map-marker-alt me-2"></i>Ahodwo Behind Absa Bank,Kumasi</p>
-            <p><i class="fa fa-phone-alt me-2"></i>(+233)246102065/ +233(245508082)</p>
+            <p><i class="fa fa-phone-alt me-2"></i>(+233)209360265/ +233(245508082)</p>
             <p><i class="fa fa-envelope me-2"></i>gyanderrick@gmail.com</p>
 
             <div class="d-flex justify-content-start mt-4">

@@ -58,7 +58,7 @@ $t = $db->get(blogs);
                             </div>
                         </div>
                         <h4 class="text-uppercase mb-3"><?=$n['blog_subj']?></h4>
-                        <a class="text-uppercase fw-bold" href="detail.php?post=<?=$n['row_key']?>">Read More <i class="bi bi-arrow-right"></i></a>
+                        <a class="text-uppercase fw-bold" href="blog-detail.php?post=<?=$n['row_key']?>">Read More <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

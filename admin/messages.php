@@ -80,9 +80,9 @@ include_once 'lib/check.php';
                                         <tr class="odd gradeX">
                                             <td  width="15%"><b><?=$hi['sender']?></b></td>
                                             <td width="20%"><?=$hi['email']?></td>
-                                            <td width="45%"><?=$hi['email']?></td>
+                                            <td width="45%"><?=$hi['message']?></td>
                                             <td class="center"><?=$hi['call_back_date']?></td>
-                                            <td class="center"><?=$hi['call_back_date']?></td>
+                                            <td class="center"><?=$hi['call_back_time']?></td>
                                             <td class="text-center">
                                                 <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o "></i></button>
                                             </td>

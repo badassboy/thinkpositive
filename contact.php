@@ -31,30 +31,63 @@
                     frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
             </div>
 
+            <?php 
+            require_once 'engine/lib/MysqliDb.php';
+
+            function hook_data($h){
+                if(isset($_POST[$h])){
+                    $g = $_POST[$h];
+                }else{
+                    $g = '';
+                }
+                return htmlspecialchars(stripslashes($g));
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send'])){
+                $sender = hook_data('sender');
+                $email = hook_data('email');
+                $subject = hook_data('subject');
+                $message = hook_data('message');
+                $date = date('');
+                
+                $data = array(
+                    'sender' => $sender,
+                    'email' => $email,
+                    'subject' => $subject,
+                    'message' => $message
+                );
+                $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+                $db->insert(messages, $data);
+            }
+            ?>
+
             <div class="col-lg-5">
                 <div class="contact-form bg-light p-5">
-                        <form method="post" action="">
-                    <div class="row g-3">
+                    <form method="post" action="">
+                        <div class="row g-3">
                             <div class="col-12 col-sm-6">
-                            <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;" name="username" required="required">
+                                <input type="text" class="form-control border-0" placeholder="Your Name"
+                                    style="height: 55px;" name="sender" required="required">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input type="email" class="form-control border-0" placeholder="Your Email"
+                                    style="height: 55px;" name="email" required="required">
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control border-0" placeholder="Subject"
+                                    style="height: 55px;" name="subject" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control border-0" rows="4" placeholder="Message" name="message"
+                                    required="required"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit" name="send">Send
+                                    Message</button>
+                            </div>
+
                         </div>
-                        <div class="col-12 col-sm-6">
-                            <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;" name="email" required="required">
-                        </div>
-                        <div class="col-12">
-                            <input type="text" class="form-control border-0" placeholder="Subject" style="height: 55px;" name="Subject">
-                        </div>
-                        <div class="col-12">
-                            <textarea class="form-control border-0" rows="4" placeholder="Message"
-                            name="subject" required="required"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit"
-                            name="send">Send Message</button>
-                        </div> 
-                       
-                    </div>
-                        </form>
+                    </form>
                 </div>
             </div>
         </div>

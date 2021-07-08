@@ -55,33 +55,27 @@
     <div class="container-fluid py-6 px-5">
         <div class="row g-5">
             <div class="col-lg-7">
-                <h2 class="display-7 text-uppercase mb-4">We are <span class="text-secondary">the Leader</span> in Real Estate Industry</h2>
-                <h5 class="text-uppercase mb-3 text-body">We Offer you with a Genuine Litigation freelands, Waterlog free, Affordable and Stylish
-                Homes in a Conducive and Serene Communities</h5>
-            <p>We strive to deliver excellence, quality and professionalism, while consulting and guiding clients
-            on their investments. Our knowledgeable experts take care of all details for your conveniences
-            and ease of mind. We have always been unique and different in our approach to the market and
-            believe in enriching the lives of others through the ownership of property.r</p>
-                <div class="row gx-5 py-2">
-                    <div class="col-sm-6 mb-2">
-                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Perfect Planning</p>
-                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Professional Workers</p>
-                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>First Working Process</p>
-                    </div>
-
-                    <div class="col-sm-6 mb-2">
-                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Excellent Service</p>
-                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Excellent Customer Care</p>
-                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Modern Designs</p>
-                    </div>
-
-                </div>
+                <h2 class="display-7 text-uppercase mb-4"><span class="text-primary">ThinkPositive </span> Estate Agency
+                </h2>
+                <p>ThinkPositive Real Estate Agency is a dynamic God-fearing company born from the motivation to build
+                    an industry leader that offers clients a holistic property solution. It was established in 2018 and
+                    has it headquarters in Kumasi the Garden City in Ghana in the Ashanti Region.</p>
+                <p>We strive to deliver excellence, quality and professionalism, while consulting and guiding clients on
+                    their investments. Our knowledgeable experts take care of all details for your conveniences and ease
+                    of mind. We have always been unique and different in our approach to the market and believe in
+                    enriching the lives of others through the ownership of property.</p>
+                <p>We offer a complete property solution that includes residential lands, commercial and industrial
+                    property for rentals, sales and investment. This bold step to once again differentiate ourselves
+                    from the rest, has inspired our vision to create value, subdue and dominate markets and give
+                    millions to support the communities we work in Ghana and beyond Africa and making a difference in
+                    the lives of others.</p>
                 <p class="mb-4"></p>
                 <!-- <img src="img/signature.jpg" alt=""> -->
             </div>
             <div class="col-lg-5 pb-5" style="min-height: 400px;">
                 <div class="position-relative bg-dark-radial h-100 ms-5">
-                    <img class="position-absolute w-100 h-100 mt-5 ms-n5" src="img/about.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 mt-5 ms-n5" src="img/about.jpg"
+                        style="object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -95,118 +89,34 @@
             <h2 class="display-7 text-uppercase mb-4">Our Services</h2>
         </div>
         <div class="row g-5">
+            <?php 
+                require_once 'engine/lib/MysqliDb.php';
+                $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+                $db->orderBy("RAND ()");
+                $fi = $db->get(services, 3);
+            ?>
+            <?php foreach($fi as $bi) { ?>
             <div class="col-lg-4 col-md-6">
                 <div class="service-item bg-white d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/land.jpg" alt="land">
+                    <img class="img-fluid" src="img/<?=$bi['s_img']?>" alt="land">
                   
                     <div class="px-4 pb-4">
-                    <h6 class="text-uppercase mb-3 custom-title">Land Sales (residential, commercial and farms)</h6>
+                    <h6 class="text-uppercase mb-3 custom-title"><?=$bi['s_title']?></h6>
                         <small>
-                            <p>For credible services you can always rely on in terms of land purchase and other properties.
-                        We have made land purchasing so simple and documents ready to you within 10 working days after payments done</p>
+                            <?=$bi['s_content']?>
                         </small>
                        
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item bg-white rounded d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/service-2.jpg" alt="service-2">
-                   
-                    <div class="px-4 pb-4">
-                        <h6 class="text-uppercase mb-3 custom-title">Building Construction</h6>
-                        <small>
-                          <p>We build from start to finish and also assure you of quality finished work output all your
-                Building and Construction needs.
-                We offers a comprehensive portfolio of building services ranging from General Contracting and
-                Construction Management services to value-added, owner-centric consulting services including
-                Pre-Construction and Program Management.
-                </p>  
-                        </small>
-                        
-                      
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item bg-white rounded d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/apartment.jpg" alt="apartment">
-                    
-                    <div class="px-4 pb-4">
-                        <h6 class="text-uppercase mb-3 custom-title">Apartment rental and Sales</h6>
-                        <p><small>If you are looking at homes/lands for sale in Ghana or are seeking professional expertise, you can rely
-                        on our personalized service that has produced successful results for thousands of clients over the past few years.. When buying or selling a home/land, the professionals at THINK POSITIVE REAL ESTATE
-                        AGENCY can help from start to finish.</small></p>
-                      
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item bg-white rounded d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/service-4.jpg" alt="service-4">
-                    
-                    <div class="px-4 pb-4">
-                        <h6 class="text-uppercase mb-3 custom-title">Project Management</h6>
-                        <p><small>We undertake property management services tailored to suit our clients satisfaction. We help
-                        property owners to manage their properties so that they can focus on other aspects of their lives.
-                        We give them the best investment advice and guide them to make very critical decisions
-                        pertaining to their properties.</small></p>
-                      
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item bg-white rounded d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/electricals.jpg" alt="electricals">
-                    
-                    <div class="px-4 pb-4">
-                        <h6 class="text-uppercase mb-3 custom-title">General Electricals and Wiring</h6>
-                        <p><small>We do all kinds of Electricals and Wiring Services</small></p>
-                     
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-item bg-white rounded d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/survey.jpg" alt="survey">
-                   
-                    <div class="px-4 pb-4">
-                        <h6 class="text-uppercase mb-3 custom-title">Land Survey</h6>
-                        <p><small>We bring to your doorsteps modern Land Survey Services</small></p>
-                       
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
     <!-- Services End -->
 
 
-    <!-- Appointment Start -->
-    <div class="container-fluid py-6 px-5">
-        <div class="row gx-5">
-            <div class="col-lg-12 mb-5 mb-lg-0">
-                <div class="mb-4">
-                    <h2 class="display-7 text-uppercase mb-4">Request A Call Back</h2>
-                </div>
-                <p class="mb-5">We are committed to provide the highest level of service by being solution-base and always
-                finding a way to meet our clients’ needs..</p>
-                <a class="btn btn-primary py-3 px-5" href="">Get A Quote</a>
-            </div>
-
-           <!--  <div class="col-lg-8">
-                <div class="bg-light text-center p-5">
-                   <?php include("callback.php"); ?>
-                </div>
-            </div> -->
-
-        </div>
-    </div>
-    <!-- Appointment End -->
-
-
     <!-- Portfolio Start -->
-    <div class="container-fluid bg-light py-6 px-5">
+    <div class="container-fluid py-6 px-5">
         <div class="text-center mx-auto mb-5" style="max-width: 600px;">
             <h2 class="display-7 text-uppercase mb-4">Popular  Projects</h2>
         </div>
@@ -442,28 +352,16 @@
                     <div class="owl-carousel testimonial-carousel">
                         <div class="row gx-4 align-items-center">
                             <div class="col-xl-4 col-lg-5 col-md-5">
-                                <img class="img-fluid w-100 h-100 bg-light p-lg-3 mb-4 mb-md-0" src="img/testimonial-1.jpg" alt="">
+                                <video width="320" height="320" controls>
+                                    <source src="video/testimony.mp4" type="video/mp4">
+                                </video>
                             </div>
                             <div class="col-xl-8 col-lg-7 col-md-7">
-                                <h4 class="text-uppercase mb-0">Client Name</h4>
-                                <p>Profession</p>
-                                <p class="fs-5 mb-0"><i class="fa fa-2x fa-quote-left text-primary me-2"></i> Dolores sed duo
-                                    clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem
-                                    lorem magna ut labore et tempor diam tempor erat. Erat dolor rebum sit
-                                    ipsum.</p>
-                            </div>
-                        </div>
-                        <div class="row gx-4 align-items-center">
-                            <div class="col-xl-4 col-lg-5 col-md-5">
-                                <img class="img-fluid w-100 h-100 bg-light p-lg-3 mb-4 mb-md-0" src="img/testimonial-2.jpg" alt="">
-                            </div>
-                            <div class="col-xl-8 col-lg-7 col-md-7">
-                                <h4 class="text-uppercase mb-0">Client Name</h4>
-                                <p>Profession</p>
-                                <p class="fs-5 mb-0"><i class="fa fa-2x fa-quote-left text-primary me-2"></i> Dolores sed duo
-                                    clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem
-                                    lorem magna ut labore et tempor diam tempor erat. Erat dolor rebum sit
-                                    ipsum.</p>
+                                <h4 class="text-uppercase mb-0">Achiaa</h4>
+                                <p>ThinkPositive Client</p>
+                                <p class="fs-5 mb-0"><i class="fa fa-2x fa-quote-left text-primary me-2"></i> If you are
+                                    seeking to buy a land in Kumasi, Accra or any other location in Ghana, contact
+                                    ThinkPositive.<i class="fa fa-2x fa-quote-right text-primary me-2"></i></p>
                             </div>
                         </div>
                     </div>

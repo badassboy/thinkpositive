@@ -18,6 +18,12 @@ include_once 'lib/check.php';
     <link rel="stylesheet" href="assets/js/dataTables/dataTables.bootstrap.css">
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    <style>
+        .gap {
+            float: right;
+        }
+    </style>
 </head>
 
 <body>
@@ -60,6 +66,7 @@ include_once 'lib/check.php';
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Posted Blogs
+                            <button class="btn btn-sm btn-primary gap" onclick="window.location.href='blog-add.php'"><i class="fa fa-plus "></i>Add Blog</button>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

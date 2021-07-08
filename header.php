@@ -74,7 +74,7 @@ function nav_active($n){
                     <i class="bi bi-phone-vibrate fs-1 text-secondary me-3"></i>
                     <div class="text-start">
                         <h6 class="text-uppercase fw-bold">Call Us</h6>
-                        <span>(+233)246102065/ +233(245508082)</span>
+                        <span>(+233)209360265/ +233(245508082)</span>
                     </div>
                 </div>
             </div>

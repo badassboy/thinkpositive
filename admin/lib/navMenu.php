@@ -19,6 +19,9 @@ function nav_active($n){
                     <li>
                         <a <?=nav_active('blog')?> href="blog.php"><i class="fa fa-rss"></i> Blog</a>
                     </li>
+                    <li>
+                        <a <?=nav_active('serv')?> href="services.php"><i class="fa fa-cog"></i> Services</a>
+                    </li>
                 </ul>
 
             </div>

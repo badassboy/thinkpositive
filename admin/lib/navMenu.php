@@ -1,6 +1,6 @@
 <?php
 function nav_active($n){
-    $s = substr($_SERVER['PHP_SELF'], 21, 4);
+    $s = substr($_SERVER['PHP_SELF'], 7, 4);
     if($n == $s){
         return 'class="active-menu"';
     }

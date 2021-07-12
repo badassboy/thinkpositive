@@ -100,7 +100,7 @@ include_once 'lib/check.php';
                 </div>
                 <!-- /. ROW  -->
                 <footer>
-                    <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez</a></p>
+                    <?php include_once 'footer.php'; ?>
                 </footer>
             </div>
             <!-- /. PAGE INNER  -->

@@ -8,7 +8,7 @@ include_once 'lib/check.php';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog | <?=tp_app_admin?></title>
+    <title>Services | <?=tp_app_admin?></title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -97,7 +97,7 @@ include_once 'lib/check.php';
                 </div>
                 <!-- /. ROW  -->
                 <footer>
-                    <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez</a></p>
+                    <?php include_once 'footer.php'; ?>
                 </footer>
             </div>
             <!-- /. PAGE INNER  -->

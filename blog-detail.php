@@ -112,36 +112,18 @@
                 <div class="mb-5">
                     <h3 class="text-uppercase mb-4">Recent Post</h3>
                     <div class="bg-light p-4">
+                        <?php 
+                        $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+                        $db->orderBy('date_created', 'desc');
+                        $t = $db->get(blogs, 3);
+                        ?>
+                        <?php foreach($t as $b) { ?>
                         <div class="d-flex mb-3">
                             <img class="img-fluid" src="img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
                             <a href="" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0">Lorem ipsum dolor sit amet consec adipis
                             </a>
                         </div>
-                        <div class="d-flex mb-3">
-                            <img class="img-fluid" src="img/blog-2.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0">Lorem ipsum dolor sit amet consec adipis
-                            </a>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img class="img-fluid" src="img/blog-3.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0">Lorem ipsum dolor sit amet consec adipis
-                            </a>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img class="img-fluid" src="img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0">Lorem ipsum dolor sit amet consec adipis
-                            </a>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img class="img-fluid" src="img/blog-2.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0">Lorem ipsum dolor sit amet consec adipis
-                            </a>
-                        </div>
-                        <div class="d-flex">
-                            <img class="img-fluid" src="img/blog-3.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0">Lorem ipsum dolor sit amet consec adipis
-                            </a>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- Recent Post End -->

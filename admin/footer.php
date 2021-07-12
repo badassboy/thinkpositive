@@ -1,0 +1,1 @@
+<p>All right reserved. <b>thinkPositive</b> Powered by <a href="#">CloudSoft</a></p>

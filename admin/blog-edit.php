@@ -20,11 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
     //print_r($_POST); exit;
     $data = array(
         'blog_subj' => $x1,
+        'blog_img' => 'service-0.jpg',
         'blog_content' => $x2
     );
     $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
     $db->where('row_key', $p);
     $db->update(blogs, $data);
+    $_SESSION['think_mgs'] = '$.notify("Post Updated Successfully!", "success");';
+    header('Location: blog.php');exit;
 }
 
 if(isset($_GET['post'])){
@@ -76,7 +79,6 @@ if(isset($_GET['post'])){
         <div id="page-wrapper">
             <div id="page-inner">
 
-
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
@@ -104,6 +106,9 @@ if(isset($_GET['post'])){
                                                 <input type="text" class="form-control" name="subject" value="<?=$rap['blog_subj']?>" aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
+                                        <div class="col-lg-12">
+                                            <p></p>
+                                        </div>
                                         <div class="col-lg-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
@@ -120,7 +125,7 @@ if(isset($_GET['post'])){
                                                 <span class="input-group-addon">
                                                     Content
                                                 </span>
-                                                <textarea id="editor" name="content"><?=$rap['blog_content']?></textarea>
+                                                <textarea  class="form-control" id="editor" name="content"><?=$rap['blog_content']?></textarea>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-12 -->
                                         <div class="col-lg-12">
@@ -141,7 +146,7 @@ if(isset($_GET['post'])){
                 </div>
                 <!-- /. ROW  -->
                 <footer>
-                    <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez</a></p>
+                    <?php include_once 'footer.php'; ?>
                 </footer>
             </div>
             <!-- /. PAGE INNER  -->
@@ -151,13 +156,9 @@ if(isset($_GET['post'])){
     <!-- /. WRAPPER  -->
 
     <!-- JS Scripts-->
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    <script type="text/javascript" src="js/nicEdit.js"></script>
+    <script type="text/javascript">
+        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
     </script>
 
     <!-- jQuery Js -->
@@ -167,12 +168,6 @@ if(isset($_GET['post'])){
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="js/notify.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
-    </script>
 
     <script>
         <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>

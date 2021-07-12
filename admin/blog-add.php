@@ -15,10 +15,13 @@ function hook_data($h){
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
     $x1 = hook_data('subject');
     $x2 = $_POST['content'];
+    $id = $_SESSION['think_id'];
     
     //print_r($_POST); exit;
     $data = array(
         'blog_subj' => $x1,
+        'blog_img' => 'service-0.jpg',
+        'user_email' => $id,
         'blog_content' => $x2,
         'date_created' => date('Y-m-d h:i:s')
     );
@@ -90,12 +93,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
                             <div class="panel-body">
                                 <form class="form-inline" method="post">
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     Subject
                                                 </span>
-                                                <input type="text" class="form-control" name="subject" required aria-label="...">
+                                                <input type="text" class="form-control" name="subject" value="" aria-label="...">
+                                            </div><!-- /input-group -->
+                                        </div><!-- /.col-lg-6 -->
+                                        <div class="col-lg-12">
+                                            <p></p>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Date
+                                                </span>
+                                                <input type="text" class="form-control" name="date" value="" readonly aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6">
@@ -103,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
                                                 <span class="input-group-addon">
                                                     Date
                                                 </span>
-                                                <input type="text" class="form-control" name="date" required value="<?=date('Y-m-d h:i:s')?>" readonly aria-label="...">
+                                                <input type="text" class="form-control" name="date" value="" readonly aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -114,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
                                                 <span class="input-group-addon">
                                                     Content
                                                 </span>
-                                                <textarea id="editor" name="content"></textarea>
+                                                <textarea  class="form-control" id="editor" name="content"></textarea>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-12 -->
                                         <div class="col-lg-12">
@@ -135,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
                 </div>
                 <!-- /. ROW  -->
                 <footer>
-                    <p>All right reserved. Template by: <a href="http://webthemez.com">WebThemez</a></p>
+                    <?php include_once 'footer.php'; ?>
                 </footer>
             </div>
             <!-- /. PAGE INNER  -->
@@ -145,13 +159,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
     <!-- /. WRAPPER  -->
 
     <!-- JS Scripts-->
-    <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    <script type="text/javascript" src="js/nicEdit.js"></script>
+    <script type="text/javascript">
+        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
     </script>
 
     <!-- jQuery Js -->

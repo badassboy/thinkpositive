@@ -69,8 +69,7 @@ include_once 'lib/check.php';
                                             <th>Sender</th>
                                             <th>Email</th>
                                             <th>Message</th>
-                                            <th>Call Back Date</th>
-                                            <th>Call Back Time</th>
+                                            <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -81,10 +80,9 @@ include_once 'lib/check.php';
                                             <td  width="15%"><b><?=$hi['sender']?></b></td>
                                             <td width="20%"><?=$hi['email']?></td>
                                             <td width="45%"><?=$hi['message']?></td>
-                                            <td class="center"><?=$hi['call_back_date']?></td>
-                                            <td class="center"><?=$hi['call_back_time']?></td>
+                                            <td class="center"><?=$hi['date']?></td>
                                             <td class="text-center">
-                                                <button class="btn btn-sm btn-danger"><i class="fa fa-trash-o "></i></button>
+                                                <button class="btn btn-sm btn-danger conf-del" data-id="<?=$hi['row_key']?>" data-toggle="modal" data-target="#delModal"><i class="fa fa-trash-o "></i></button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -95,6 +93,20 @@ include_once 'lib/check.php';
                         </div>
                     </div>
                     <!--End Advanced Tables -->
+                </div>
+
+                <div class="modal" id="delModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <p>Sure you want to delete this Message?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary bang">Delete</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 </div>
@@ -118,13 +130,22 @@ include_once 'lib/check.php';
     <script src="js/notify.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
+        <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>
     </script>
 
     <script>
-        <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+
+            $('.conf-del').on('click', function (e) {
+                var id = $(this).attr('data-id');
+                $('.bang').attr('data-id',id);
+            });
+            $(".bang").on('click', function (e) {
+                var id = $(this).attr('data-id');
+                location.href="del-msg.php?m="+id;
+            });
+        });
     </script>
 
 

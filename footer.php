@@ -10,7 +10,7 @@
                 always finding a way to meet our clients’ needs.</p>
             <p><i class="fa fa-map-marker-alt me-2"></i>Ahodwo Behind Absa Bank,Kumasi</p>
             <p><i class="fa fa-phone-alt me-2"></i>(+233)209360265/ +233(245508082)</p>
-            <p><i class="fa fa-envelope me-2"></i>gyanderrick@gmail.com</p>
+            <p><i class="fa fa-envelope me-2"></i>info@thinkpositiveestates.com</p>
 
             <div class="d-flex justify-content-start mt-4">
                 <a class="btn btn-lg btn-primary btn-lg-square rounded-0 me-2" href="#"><i

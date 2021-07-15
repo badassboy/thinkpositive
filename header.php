@@ -8,15 +8,39 @@ function nav_active($n){
     }
 }
 
+function headee(){
+    $s = substr($_SERVER['PHP_SELF'], 1, 4);
+    if($s == 'inde'){
+        return 'Home';
+    }elseif($s == 'serv'){
+        return 'Service';
+    }elseif($s == 'blog'){
+        return 'Blog';
+    }elseif($s == 'earn'){
+        return 'Earn A Commision';
+    }elseif($s == 'cont'){
+        return 'Contact';
+    }elseif($s == 'abou'){
+        return 'About';
+    }else{
+        return 'Travel & Tour';
+    }
+}
+
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title><?=appname?></title>
+    <title><?=headee().' | '.appname?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="ThinkPositive" name="keywords">
-    <meta content="ThinkPositive" name="description">
+    <meta content="Think Positive" name="keywords">
+    <meta content="Think Positive Real Estate Agency is a dynamic God-fearing company born from the motivation to build an industry leader that offers clients a holistic property solution. It was established in 2018 and has it headquarters in Kumasi the Garden City in Ghana in the Ashanti Region." name="description">
+
+    <meta property="og:title" content="Think Positive Real Estate Agency" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="img/logo2.jpg" />
+    <meta property="og:url" content="https://www.thinkpositiveestates.com/" />
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -65,7 +89,7 @@ function nav_active($n){
                     <i class="bi bi-envelope-open fs-1 text-secondary me-3"></i>
                     <div class="text-start">
                         <h6 class="text-uppercase fw-bold">Email Us</h6>
-                        <span>gyanderrick@gmail.com</span>
+                        <span>info@thinkpositiveestates.com</span>
                     </div>
                 </div>
             </div>
@@ -86,7 +110,7 @@ function nav_active($n){
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top navbar-light custom-nav  shadow-sm px-5 pe-lg-0 ">
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <a href="index.php" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <!-- <h1 class="m-0 display-4 text-uppercase text-white">
                     <i class="bi bi-building text-primary me-2"></i>WEBUILD</h1> -->
                 <img src="img/logo12.png" width="140" alt="logo">
@@ -101,6 +125,7 @@ function nav_active($n){
                     <a href="about.php" class="nav-item nav-link <?=nav_active('abou')?>">About</a>
                     <a href="service.php" class="nav-item nav-link <?=nav_active('serv')?>">Service</a>
                     <a href="blog.php" class="nav-item nav-link <?=nav_active('blog')?>">Blog</a>
+                    <a href="earn-commision.php" class="nav-item nav-link <?=nav_active('earn')?>">Earn A Commision</a>
                     <a href="contact.php" class="nav-item nav-link <?=nav_active('cont')?>">Contact</a>
 
                    <!--  <div class="nav-item dropdown">

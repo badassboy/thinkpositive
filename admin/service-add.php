@@ -12,37 +12,36 @@ function hook_data($h){
 	return htmlspecialchars(stripslashes($g));
 }
 
-function blogid(){
+function srvid(){
     $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
-    $db->orderBy('blog_count', 'DESC');
-    $arc = $db->get(blogs, 1); $mit = count($arc);
+    $db->orderBy('s_count', 'DESC');
+    $arc = $db->get(services, 1); $mit = count($arc);
     if($mit === 0){
         return "1";
     }else{
-        $barc = substr($arc[0]['blog_count'], 5, 3);
+        $barc = substr($arc[0]['s_count'], 8, 3);
         $vit = $barc + 1;
         if($barc < 9 && $barc > 0){
             return $vit;
         }elseif($barc < '99' && $barc >= '9'){
             return $vit;
-        }elseif($barc < '0999' && $barc >= '0099'){
+        }elseif($barc < '999' && $barc >= '99'){
             return $vit;
         }
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
-    $x1 = hook_data('subject');
+    $x1 = hook_data('title');
     $x2 = $_POST['content'];
-    $id = $_SESSION['think_id'];
     
-    if(isset($_FILES['blog_img'])){
+    if(isset($_FILES['s_img'])){
         $errors= array();
-        $file_name = $_FILES['blog_img']['name'];
-        $file_size = $_FILES['blog_img']['size'];
-        $file_tmp = $_FILES['blog_img']['tmp_name'];
-        $file_type = $_FILES['blog_img']['type'];
-        $exploded = explode('.', $_FILES['blog_img']['name']);
+        $file_name = $_FILES['s_img']['name'];
+        $file_size = $_FILES['s_img']['size'];
+        $file_tmp = $_FILES['s_img']['tmp_name'];
+        $file_type = $_FILES['s_img']['type'];
+        $exploded = explode('.', $_FILES['s_img']['name']);
         $file_ext = strtolower(end($exploded));
   
         $expensions= array("jpeg","jpg","png");
@@ -59,20 +58,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
            $errors[]="error";
         }
         if(empty($errors)==true){
-            $newfilename = 'blog-'.blogid();
-            move_uploaded_file($file_tmp,"../img/blog/".$newfilename.".".$file_ext);
+            $newfilename = 'service-'.srvid();
+            move_uploaded_file($file_tmp,"../img/service/".$newfilename.".".$file_ext);
             $data = array(
-                'blog_subj' => $x1,
-                'blog_img' => $newfilename.".".$file_ext,
-                'blog_count' => $newfilename,
-                'user_email' => $id,
-                'blog_content' => $x2,
-                'date_created' => date('Y-m-d h:i:s')
+                's_title' => $x1,
+                's_img' => $newfilename.".".$file_ext,
+                's_count' => $newfilename,
+                's_content' => $x2
             );
             $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
-            $db->insert(blogs, $data);
-            $_SESSION['think_mgs'] = '$.notify("Blog Added Successfully!", "success");';
-            header('Location: blog.php');exit;
+            $db->insert(services, $data);
+            $_SESSION['think_mgs'] = '$.notify("Service Added Successfully!", "success");';
+            header('Location: services.php');exit;
         }
   
     }
@@ -124,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Blog 
+                            Services 
                         </h1>
                     </div>
                 </div>
@@ -135,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                         <!-- Advanced Tables -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Add New Blog
+                                Add New Service
                             </div>
                             <div class="panel-body">
                                 <form class="form-inline" method="post" enctype="multipart/form-data">
@@ -143,9 +140,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                                         <div class="col-lg-12">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Subject
+                                                    Title
                                                 </span>
-                                                <input type="text" class="form-control" name="subject" value="" aria-label="...">
+                                                <input type="text" class="form-control" name="title" value="" aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -153,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="input-group">
-                                                <input type="file" name="blog_img"/>
+                                                <input type="file" name="s_img"/>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-6">

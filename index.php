@@ -18,9 +18,7 @@
 
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-            
                             <h2 class="display-5 text-uppercase text-white mb-md-4">Get Your Dream House With Us</h2>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Get A Quote</a>
                         </div>
                     </div>
 
@@ -55,9 +53,9 @@
     <div class="container-fluid py-6 px-5">
         <div class="row g-5">
             <div class="col-lg-7">
-                <h2 class="display-7 text-uppercase mb-4"><span class="text-primary">ThinkPositive </span> Estate Agency
+                <h2 class="display-7 text-uppercase mb-4"><span class="text-primary">Think Positive </span>Real Estate Agency
                 </h2>
-                <p>ThinkPositive Real Estate Agency is a dynamic God-fearing company born from the motivation to build
+                <p>Think Positive Real Estate Agency is a dynamic God-fearing company born from the motivation to build
                     an industry leader that offers clients a holistic property solution. It was established in 2018 and
                     has it headquarters in Kumasi the Garden City in Ghana in the Ashanti Region.</p>
                 <p>We strive to deliver excellence, quality and professionalism, while consulting and guiding clients on
@@ -98,7 +96,7 @@
             <?php foreach($fi as $bi) { ?>
             <div class="col-lg-4 col-md-6">
                 <div class="service-item bg-white d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/<?=$bi['s_img']?>" alt="land">
+                    <img class="img-fluid" src="img/service/<?=$bi['s_img']?>" alt="land">
                   
                     <div class="px-4 pb-4">
                     <h6 class="text-uppercase mb-3 custom-title"><?=$bi['s_title']?></h6>
@@ -149,24 +147,12 @@
 
         <div class="row g-5 portfolio-container">
 
-            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
                 <div class="position-relative portfolio-box">
-                    <img class="img-fluid w-100" src="img/project1.jpg" alt="">
+                    <img class="img-fluid w-100" src="img/projects/project1.jpg" alt="">
 
             
-                    <a class="portfolio-btn" href="img/project1.jpg" data-lightbox="portfolio">
-                        <i class="bi bi-plus text-white"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
-                <div class="position-relative portfolio-box">
-                    <img class="img-fluid w-100" src="img/project2.jpg" alt="">
-
-                 
-
-                    <a class="portfolio-btn" href="img/project2.jpg" data-lightbox="portfolio">
+                    <a class="portfolio-btn" href="img/projects/project1.jpg" data-lightbox="portfolio">
                         <i class="bi bi-plus text-white"></i>
                     </a>
                 </div>
@@ -174,24 +160,19 @@
 
             <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
                 <div class="position-relative portfolio-box">
-                    <img class="img-fluid w-100" src="img/project3.jpg" alt="">
+                    <img class="img-fluid w-100" src="img/projects/project2.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project2.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project3.jpg" alt="">
                   
-                    <a class="portfolio-btn" href="img/portfolio-3.jpg" data-lightbox="portfolio">
-                        <i class="bi bi-plus text-white"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
-                <div class="position-relative portfolio-box">
-                    <img class="img-fluid w-100" src="img/project4.jpg" alt="">
-
-                  <!--   <a class="portfolio-title shadow-sm" href="">
-                        <p class="h4 text-uppercase">Project Name</p>
-                        <span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-                    </a> -->
-
-                    <a class="portfolio-btn" href="img/project4.jpg" data-lightbox="portfolio">
+                    <a class="portfolio-btn" href="img/projects/project3.jpg" data-lightbox="portfolio">
                         <i class="bi bi-plus text-white"></i>
                     </a>
                 </div>
@@ -199,14 +180,109 @@
 
             <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
                 <div class="position-relative portfolio-box">
-                    <img class="img-fluid w-100" src="img/project5.jpg" alt="">
+                    <img class="img-fluid w-100" src="img/projects/project4.jpg" alt="">
 
-                   <!--  <a class="portfolio-title shadow-sm" href="">
-                        <p class="h4 text-uppercase">Project Name</p>
-                        <span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-                    </a> -->
+                    <a class="portfolio-btn" href="img/projects/project4.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
 
-                    <a class="portfolio-btn" href="img/project5.jpg" data-lightbox="portfolio">
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project5.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project5.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project6.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project6.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project7.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project7.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project8.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project8.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project9.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project9.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project10.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project10.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project11.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project11.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project12.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project12.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project13.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project13.jpg" data-lightbox="portfolio">
+                        <i class="bi bi-plus text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
+                <div class="position-relative portfolio-box">
+                    <img class="img-fluid w-100" src="img/projects/project14.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project14.jpg" data-lightbox="portfolio">
                         <i class="bi bi-plus text-white"></i>
                     </a>
                 </div>
@@ -214,14 +290,9 @@
 
             <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item second">
                 <div class="position-relative portfolio-box">
-                    <img class="img-fluid w-100" src="img/project6.jpg" alt="">
-<!-- 
-                    <a class="portfolio-title shadow-sm" href="">
-                        <p class="h4 text-uppercase">Project Name</p>
-                        <span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</span>
-                    </a>
-                     -->
-                    <a class="portfolio-btn" href="img/project6.jpg" data-lightbox="portfolio">
+                    <img class="img-fluid w-100" src="img/projects/project15.jpg" alt="">
+
+                    <a class="portfolio-btn" href="img/projects/project15.jpg" data-lightbox="portfolio">
                         <i class="bi bi-plus text-white"></i>
                     </a>
                 </div>
@@ -352,16 +423,55 @@
                     <div class="owl-carousel testimonial-carousel">
                         <div class="row gx-4 align-items-center">
                             <div class="col-xl-4 col-lg-5 col-md-5">
-                                <video width="320" height="320" controls>
+                                <video width="300" controls>
                                     <source src="video/testimony.mp4" type="video/mp4">
                                 </video>
                             </div>
                             <div class="col-xl-8 col-lg-7 col-md-7">
                                 <h4 class="text-uppercase mb-0">Achiaa</h4>
-                                <p>ThinkPositive Client</p>
-                                <p class="fs-5 mb-0"><i class="fa fa-2x fa-quote-left text-primary me-2"></i> If you are
+                                <p>Think Positive Client</p>
+                                <p class="fs-5 mb-0"><i class="fa fa-1x fa-quote-left text-primary me-2"></i> If you are
                                     seeking to buy a land in Kumasi, Accra or any other location in Ghana, contact
-                                    ThinkPositive.<i class="fa fa-2x fa-quote-right text-primary me-2"></i></p>
+                                    Think Positive.<i class="fa fa-1x fa-quote-right text-primary me-2"></i></p>
+                            </div>
+                        </div>
+                        <div class="row gx-4 align-items-center">
+                            <div class="col-xl-4 col-lg-5 col-md-5">
+                                <img src="img/testifiers/testi-1.jpg" alt="" width="320">
+                            </div>
+                            <div class="col-xl-8 col-lg-7 col-md-7">
+                                <h4 class="text-uppercase mb-0">LENIN EDWARD</h4>
+                                <p>Think Positive Client</p>
+                                <p class="fs-5 mb-0"><i class="fa fa-1x fa-quote-left text-primary me-2"></i> The best
+                                    service so far ...very satisfying...humble, respectful and safe. God bless you Think
+                                    Positive Real estate ...keep up the good work <i
+                                        class="fa fa-1x fa-quote-right text-primary me-2"></i></p>
+                            </div>
+                        </div>
+                        <div class="row gx-4 align-items-center">
+                            <div class="col-xl-4 col-lg-5 col-md-5">
+                                <img src="img/testifiers/testi-1.jpg" alt="" width="320">
+                            </div>
+                            <div class="col-xl-8 col-lg-7 col-md-7">
+                                <h4 class="text-uppercase mb-0">LOVIA</h4>
+                                <p>Think Positive Client</p>
+                                <p class="fs-5 mb-0"><i class="fa fa-1x fa-quote-left text-primary me-2"></i> Very
+                                    dedicated to customer satisfaction. Impressive customer support, even after
+                                    completion of transaction. Well done! <i
+                                        class="fa fa-1x fa-quote-right text-primary me-2"></i></p>
+                            </div>
+                        </div>
+                        <div class="row gx-4 align-items-center">
+                            <div class="col-xl-4 col-lg-5 col-md-5">
+                                <img src="img/testifiers/testi-1.jpg" alt="" width="320">
+                            </div>
+                            <div class="col-xl-8 col-lg-7 col-md-7">
+                                <h4 class="text-uppercase mb-0">BENJAMIN .D</h4>
+                                <p>Think Positive Client</p>
+                                <p class="fs-5 mb-0"><i class="fa fa-1x fa-quote-left text-primary me-2"></i> He is a
+                                    great professional and knows how to go about his job; he did a good job by getting
+                                    me a nice apartment at lakeside estate police station. <i
+                                        class="fa fa-1x fa-quote-right text-primary me-2"></i></p>
                             </div>
                         </div>
                     </div>

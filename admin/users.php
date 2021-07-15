@@ -2,13 +2,21 @@
 include_once 'lib/constants.php';
 include_once 'lib/check.php';
 
+function state($v){
+    if($v == 1){
+        return 'Active';
+    }else{
+        return 'Inactive';
+    }
+}
+
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog | <?=tp_app_admin?></title>
+    <title>Services | <?=tp_app_admin?></title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -66,28 +74,32 @@ include_once 'lib/check.php';
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Posted Blogs
-                            <button class="btn btn-sm btn-primary gap" onclick="window.location.href='blog-add.php'"><i class="fa fa-plus "></i>Add Blog</button>
+                            <button class="btn btn-sm btn-primary gap" onclick="window.location.href='service-add.php'"><i class="fa fa-plus "></i>Add a Service</button>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Subject /Picture</th>
+                                            <th>Subject</th>
                                             <th>Contents</th>
                                             <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php require_once 'lib/blogger.php' ?>
+                                    <?php 
+                                    require_once 'lib/MysqliDb.php';
+                                    $id = $_SESSION['think_id'];
+                                    $iv = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+                                    $ba = $iv->get(users);
+                                    ?>
                                     <?php foreach($ba as $hi){ ?>
                                         <tr class="odd gradeX">
-                                            <td  width="25%"><b><?=$hi['blog_subj']?><br><img src="../img/blog/<?=$hi['blog_img']?>" width="200px"/></b></td>
-                                            <td width="45%"><?=$hi['blog_content']?></td>
-                                            <td class="center"><?=$hi['date_created']?></td>
+                                            <td  width="25%"><b><?=$hi['user_fname'].' '.$hi['user_lname']?></b></td>
+                                            <td width="45%"><?=$hi['user_email']?></td>
+                                            <td class="center"><?=state($hi['user_status'])?>  </td>
                                             <td class="text-center">
-                                                <button class="btn btn-sm btn-primary" onclick="window.location.href='blog-edit.php?post=<?=$hi['row_key']?>'"><i class="fa fa-edit "></i></button>
                                                 <button class="btn btn-sm btn-danger conf-del" data-id="<?=$hi['row_key']?>" data-toggle="modal" data-target="#delModal"><i class="fa fa-trash-o "></i></button>
                                             </td>
                                         </tr>
@@ -101,20 +113,6 @@ include_once 'lib/check.php';
                     <!--End Advanced Tables -->
                 </div>
 
-                <div class="modal" id="delModal" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <p>Sure you want to delete this post?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary bang">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 </div>
                 <!-- /. ROW  -->
                 <footer>
@@ -124,6 +122,20 @@ include_once 'lib/check.php';
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
+    </div>
+
+    <div class="modal" id="delModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Sure you want to delete this User?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary bang">Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
@@ -136,10 +148,6 @@ include_once 'lib/check.php';
     <script src="js/notify.js"></script>
 
     <script>
-        <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>
-    </script>
-
-    <script>
         $(document).ready(function () {
             $('#dataTables-example').dataTable();
 
@@ -149,9 +157,13 @@ include_once 'lib/check.php';
             });
 		    $(".bang").on('click', function (e) {
 		    	var id = $(this).attr('data-id');
-		    	location.href="del-blog.php?post="+id;
+		    	location.href="del-user.php?user="+id;
 		    });
         });
+    </script>
+
+    <script>
+        <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>
     </script>
 
 

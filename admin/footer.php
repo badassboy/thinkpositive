@@ -1,1 +1,1 @@
-<p>All right reserved. <b>thinkPositive</b> Powered by <a href="#">CloudSoft</a></p>
+<p>All right reserved. <b>Think Positive</b> Powered by <a href="#">CloudSoft</a></p>

@@ -8,6 +8,8 @@ if(isset($_GET['post'])){
     $cd = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
     $cd->where('row_key', $post);
     $cd->delete(blogs);
+    $v = $cd->getOne(blogs);
+    unlink("../img/blog/".$v['blog_img']);
     $_SESSION['think_mgs'] = '$.notify("Post Deleted Successfully!", "success");';
     header('Location: blog.php');exit;
 }

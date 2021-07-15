@@ -12,22 +12,89 @@ function hook_data($h){
 	return htmlspecialchars(stripslashes($g));
 }
 
+function blogid(){
+    $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
+    $db->orderBy('blog_count', 'DESC');
+    $arc = $db->get(blogs, 1); $mit = count($arc);
+    if($mit === 0){
+        return "1";
+    }else{
+        $barc = substr($arc[0]['blog_count'], 5, 3);
+        $vit = $barc + 1;
+        if($barc < 9 && $barc > 0){
+            return $vit;
+        }elseif($barc < '99' && $barc >= '9'){
+            return $vit;
+        }elseif($barc < '0999' && $barc >= '0099'){
+            return $vit;
+        }
+    }
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
+
     $p = $_GET['post'];
     $x1 = hook_data('subject');
     $x2 = $_POST['content'];
-    
-    //print_r($_POST); exit;
-    $data = array(
-        'blog_subj' => $x1,
-        'blog_img' => 'service-0.jpg',
-        'blog_content' => $x2
-    );
-    $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
-    $db->where('row_key', $p);
-    $db->update(blogs, $data);
-    $_SESSION['think_mgs'] = '$.notify("Post Updated Successfully!", "success");';
-    header('Location: blog.php');exit;
+
+    //Only when adding new
+    // $df = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+    // $df->get(blogs);
+
+    if(isset($_FILES['blog_img'])){
+        $errors= array();
+        $file_name = $_FILES['blog_img']['name'];
+        $file_size = $_FILES['blog_img']['size'];
+        $file_tmp = $_FILES['blog_img']['tmp_name'];
+        $file_type = $_FILES['blog_img']['type'];
+        $exploded = explode('.', $_FILES['blog_img']['name']);
+        $file_ext = strtolower(end($exploded));
+  
+        $expensions= array("jpeg","jpg","png");
+        if(file_exists($file_name)) {
+          $_SESSION['think_mgs'] = '$.notify("Sorry, file already exists!", "error");';
+          $errors[]="error";
+          }
+        if(in_array($file_ext,$expensions)=== false){
+            $_SESSION['think_mgs'] = '$.notify("Extension not allowed! Please choose a JPEG or PNG file.", "error");';
+            $errors[]="error";
+        }
+  
+        if($file_size > 2097152){
+           $_SESSION['think_mgs'] = '$.notify("File size must be excately 2 MB!", "error");';
+           $errors[]="error";
+        }
+  
+        if(empty($errors)==true){
+            //$b = $df->count + 1;
+            $newfilename = 'blog-'.$p;
+            move_uploaded_file($file_tmp,"../img/blog/".$newfilename.".".$file_ext);
+            $stat = 1;
+
+            $data = array(
+                'blog_subj' => $x1,
+                'blog_img' => $newfilename.".".$file_ext,
+                'blog_content' => $x2
+            );
+            $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+            $db->where('row_key', $p);
+            $db->update(blogs, $data);
+            $_SESSION['think_mgs'] = '$.notify("Post Updated Successfully!", "success");';
+            header('Location: blog.php');exit;
+        }else{
+            $data = array(
+                'blog_subj' => $x1,
+                'blog_content' => $x2
+            );
+            $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+            $db->where('row_key', $p);
+            $db->update(blogs, $data);
+            $_SESSION['think_mgs'] = '$.notify("Post Updated Successfully!", "success");';
+            header('Location: blog.php');exit;
+        }
+  
+    }
 }
 
 if(isset($_GET['post'])){
@@ -51,6 +118,7 @@ if(isset($_GET['post'])){
     <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/js/dataTables/dataTables.bootstrap.css">
+
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -96,7 +164,7 @@ if(isset($_GET['post'])){
                                 Edit Blog
                             </div>
                             <div class="panel-body">
-                                <form class="form-inline" method="post">
+                                <form class="form-inline" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="input-group">
@@ -111,10 +179,9 @@ if(isset($_GET['post'])){
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    Date
-                                                </span>
-                                                <input type="text" class="form-control" name="date" value="<?=$rap['date_created']?>" readonly aria-label="...">
+                                            <img class="img-thumbline" id="profile_picture" height="128" data-src="default.jpg" data-holder-rendered="true" width="180px" src="../img/blog/<?=$rap['blog_img']?>">
+                                            <br><p></p>
+                                                <input type="file" name="blog_img"/>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -162,7 +229,8 @@ if(isset($_GET['post'])){
     </script>
 
     <!-- jQuery Js -->
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <!--<script src="js/jquery-3.6.0.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
     <!-- Bootstrap Js -->

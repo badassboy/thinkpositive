@@ -50,11 +50,11 @@ $t = $db->get(blogs, 3);
             <?php foreach($t as $n) { ?>
             <div class="col-lg-4 col-md-6">
                 <div class="bg-light">
-                    <img class="img-fluid" src="img/<?=$n['blog_img']?>" alt="">
+                    <img class="img-fluid" src="img/blog/<?=$n['blog_img']?>" alt="">
                     <div class="p-4">
                         <div class="d-flex justify-content-between mb-4">
                             <div class="d-flex align-items-center">
-                                <img class="rounded-circle me-2" src="img/<?=get_blogger($n['user_email'], 'id')?>.jpg" width="35" height="35" alt="">
+                                <!--<img class="rounded-circle me-2" src="img/<?=get_blogger($n['user_email'], 'id')?>.jpg" width="35" height="35" alt=""> -->
                                 <span><?=get_blogger($n['user_email'], 'name')?></span>
                             </div>
                             <div class="d-flex align-items-center">

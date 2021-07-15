@@ -19,14 +19,14 @@
             <div class="col-lg-8">
                 <!-- Blog Detail Start -->
                 <div class="mb-5">
-                    <img class="img-fluid w-100 rounded mb-5" src="img/<?=$blog['blog_img']?>" alt="">
+                    <img class="img-fluid w-100 rounded mb-5" src="img/blog/<?=$blog['blog_img']?>" alt="">
                     <h1 class="text-uppercase mb-4"><?=$blog['blog_subj']?></h1>
                     <p><?=$blog['blog_content']?></p>
                 </div>
                 <!-- Blog Detail End -->
 
                 <!-- Comment List Start -->
-                <div class="mb-5">
+                <!-- <div class="mb-5">
                     <h3 class="text-uppercase mb-4">3 Comments</h3>
                     <div class="d-flex mb-4">
                         <img src="img/user.jpg" class="img-fluid" style="width: 45px; height: 45px;">
@@ -55,11 +55,11 @@
                             <button class="btn btn-sm btn-light">Reply</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Comment List End -->
 
                 <!-- Comment Form Start -->
-                <div class="bg-light p-5">
+                <!-- <div class="bg-light p-5">
                     <h3 class="text-uppercase mb-4">Leave a comment</h3>
                     <form>
                         <div class="row g-3">
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <!-- Comment Form End -->
             </div>
 
@@ -99,11 +99,8 @@
                 <div class="mb-5">
                     <h3 class="text-uppercase mb-4">Categories</h3>
                     <div class="d-flex flex-column justify-content-start bg-light p-4">
-                        <a class="h6 text-uppercase mb-4" href="#"><i class="fa fa-angle-right me-2"></i>Web Design</a>
-                        <a class="h6 text-uppercase mb-4" href="#"><i class="fa fa-angle-right me-2"></i>Web Development</a>
-                        <a class="h6 text-uppercase mb-4" href="#"><i class="fa fa-angle-right me-2"></i>Web Development</a>
-                        <a class="h6 text-uppercase mb-4" href="#"><i class="fa fa-angle-right me-2"></i>Keyword Research</a>
-                        <a class="h6 text-uppercase mb-0" href="#"><i class="fa fa-angle-right me-2"></i>Email Marketing</a>
+                        <a class="h6 text-uppercase mb-4" href="#"><i class="fa fa-angle-right me-2"></i>Renovations</a>
+                        <a class="h6 text-uppercase mb-4" href="#"><i class="fa fa-angle-right me-2"></i>Construction</a>
                     </div>
                 </div>
                 <!-- Category End -->
@@ -115,54 +112,17 @@
                         <?php 
                         $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
                         $db->orderBy('date_created', 'desc');
-                        $t = $db->get(blogs, 3);
+                        $t = $db->get(blogs, 4);
                         ?>
                         <?php foreach($t as $b) { ?>
                         <div class="d-flex mb-3">
-                            <img class="img-fluid" src="img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                            <a href="" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0">Lorem ipsum dolor sit amet consec adipis
-                            </a>
+                            <img class="img-fluid" src="img/blog/<?=$b['blog_img']?>" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                            <a href="blog-detail.php?post=<?=$b['row_key']?>" class="h6 d-flex align-items-center bg-white text-uppercase px-3 mb-0"><?=$b['blog_subj']?></a>
                         </div>
                         <?php } ?>
                     </div>
                 </div>
                 <!-- Recent Post End -->
-
-                <!-- Image Start -->
-                <div class="mb-5">
-                    <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
-                </div>
-                <!-- Image End -->
-
-                <!-- Tags Start -->
-                <div class="mb-5">
-                    <h3 class="text-uppercase mb-4">Tag Cloud</h3>
-                    <div class="d-flex flex-wrap m-n1">
-                        <a href="" class="btn btn-outline-dark m-1">Design</a>
-                        <a href="" class="btn btn-outline-dark m-1">Development</a>
-                        <a href="" class="btn btn-outline-dark m-1">Marketing</a>
-                        <a href="" class="btn btn-outline-dark m-1">SEO</a>
-                        <a href="" class="btn btn-outline-dark m-1">Writing</a>
-                        <a href="" class="btn btn-outline-dark m-1">Consulting</a>
-                        <a href="" class="btn btn-outline-dark m-1">Design</a>
-                        <a href="" class="btn btn-outline-dark m-1">Development</a>
-                        <a href="" class="btn btn-outline-dark m-1">Marketing</a>
-                        <a href="" class="btn btn-outline-dark m-1">SEO</a>
-                        <a href="" class="btn btn-outline-dark m-1">Writing</a>
-                        <a href="" class="btn btn-outline-dark m-1">Consulting</a>
-                    </div>
-                </div>
-                <!-- Tags End -->
-
-                <!-- Plain Text Start -->
-                <div>
-                    <h3 class="text-uppercase mb-4">Plain Text</h3>
-                    <div class="bg-light rounded text-center" style="padding: 30px;">
-                        <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet diam</p>
-                        <a href="" class="btn btn-primary py-2 px-4">Read More</a>
-                    </div>
-                </div>
-                <!-- Plain Text End -->
             </div>
             <!-- Sidebar End -->
         </div>

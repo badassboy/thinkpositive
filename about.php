@@ -17,8 +17,7 @@
     <div class="container-fluid py-6 px-5">
         <div class="row g-5">
             <div class="col-lg-7">
-                <h2 class="display-7 text-uppercase mb-4">We are <span class="text-primary">ThinkPositive </span> Estate
-                    Agency </h2>
+                <h2 class="display-7 text-uppercase mb-4">We are <span class="text-primary">Think Positive </span> Real Estate</h2>
                 <h5 class="text-uppercase mb-3 text-body">We Offer you with a Genuine Litigation free lands, Waterlog
                     free, Affordable and Stylish Homes in a Conducive and Serene Communities</h5>
                 <h5 class="text-uppercase mb-3 text-body">Helping Business Security & Peace of Mind for Your Family.
@@ -41,6 +40,7 @@
                             Wiring</p>
                         <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Land Survey Services</p>
                         <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Property Management</p>
+                        <p class="fw-bold mb-2"><i class="fa fa-check text-primary me-3"></i>Borehole Drilling Services</p>
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
         <div class="row g-5">
             <div class="col-lg-7">
                 <h5 class="display-7 text-uppercase mb-4">About Us</h5>
-                <p>ThinkPositive Real Estate Agency is a dynamic God-fearing company born from the motivation to build
+                <p>Think Positive Real Estate Agency is a dynamic God-fearing company born from the motivation to build
                     an industry leader that offers clients a holistic property solution. It was established in 2018 and
                     has it headquarters in Kumasi the Garden City in Ghana in the Ashanti Region.</p>
                 <p>We strive to deliver excellence, quality and professionalism, while consulting and guiding clients on

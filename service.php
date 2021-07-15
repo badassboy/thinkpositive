@@ -28,7 +28,7 @@
             <?php foreach($fi as $bi) { ?>
             <div class="col-lg-4 col-md-6">
                 <div class="service-item bg-white d-flex flex-column align-items-center text-center">
-                    <img class="img-fluid" src="img/<?=$bi['s_img']?>" alt="land">
+                    <img class="img-fluid" src="img/service/<?=$bi['s_img']?>" alt="land">
                   
                     <div class="px-4 pb-4">
                     <h6 class="text-uppercase mb-3 custom-title"><?=$bi['s_title']?></h6>

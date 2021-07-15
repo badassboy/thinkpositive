@@ -14,12 +14,12 @@ function hook_data($h){
 
 function blogid(){
     $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
-    $db->orderBy('blog_count', 'DESC');
-    $arc = $db->get(blogs, 1); $mit = count($arc);
+    $db->orderBy('s_count', 'DESC');
+    $arc = $db->get(services, 1); $mit = count($arc);
     if($mit === 0){
         return "1";
     }else{
-        $barc = substr($arc[0]['blog_count'], 5, 3);
+        $barc = substr($arc[0]['s_count'], 5, 3);
         $vit = $barc + 1;
         if($barc < 9 && $barc > 0){
             return $vit;
@@ -31,51 +31,76 @@ function blogid(){
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
-    $x1 = hook_data('subject');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
+
+    $p = $_GET['post'];
+    $x1 = hook_data('s_title');
     $x2 = $_POST['content'];
-    $id = $_SESSION['think_id'];
-    
-    if(isset($_FILES['blog_img'])){
+
+    //Only when adding new
+    // $df = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+    // $df->get(blogs);
+
+    if(isset($_FILES['s_img'])){
         $errors= array();
-        $file_name = $_FILES['blog_img']['name'];
-        $file_size = $_FILES['blog_img']['size'];
-        $file_tmp = $_FILES['blog_img']['tmp_name'];
-        $file_type = $_FILES['blog_img']['type'];
-        $exploded = explode('.', $_FILES['blog_img']['name']);
+        $file_name = $_FILES['s_img']['name'];
+        $file_size = $_FILES['s_img']['size'];
+        $file_tmp = $_FILES['s_img']['tmp_name'];
+        $file_type = $_FILES['s_img']['type'];
+        $exploded = explode('.', $_FILES['s_img']['name']);
         $file_ext = strtolower(end($exploded));
   
         $expensions= array("jpeg","jpg","png");
         if(file_exists($file_name)) {
-            $_SESSION['think_mgs'] = '$.notify("Sorry, file already exists!", "error");';
-            $errors[]="error";
-        }
+          $_SESSION['think_mgs'] = '$.notify("Sorry, file already exists!", "error");';
+          $errors[]="error";
+          }
         if(in_array($file_ext,$expensions)=== false){
             $_SESSION['think_mgs'] = '$.notify("Extension not allowed! Please choose a JPEG or PNG file.", "error");';
             $errors[]="error";
         }
+  
         if($file_size > 2097152){
            $_SESSION['think_mgs'] = '$.notify("File size must be excately 2 MB!", "error");';
            $errors[]="error";
         }
+  
         if(empty($errors)==true){
-            $newfilename = 'blog-'.blogid();
-            move_uploaded_file($file_tmp,"../img/blog/".$newfilename.".".$file_ext);
+            //$b = $df->count + 1;
+            $newfilename = 'blog-'.$p;
+            move_uploaded_file($file_tmp,"../img/service/".$newfilename.".".$file_ext);
+
             $data = array(
-                'blog_subj' => $x1,
-                'blog_img' => $newfilename.".".$file_ext,
-                'blog_count' => $newfilename,
-                'user_email' => $id,
-                'blog_content' => $x2,
-                'date_created' => date('Y-m-d h:i:s')
+                's_title' => $x1,
+                's_img' => $newfilename.".".$file_ext,
+                's_content' => $x2
             );
             $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
-            $db->insert(blogs, $data);
-            $_SESSION['think_mgs'] = '$.notify("Blog Added Successfully!", "success");';
-            header('Location: blog.php');exit;
+            $db->where('row_key', $p);
+            $db->update(services, $data);
+            $_SESSION['think_mgs'] = '$.notify("Service Updated Successfully!", "success");';
+            header('Location: services.php');exit;
+        }else{
+            $data = array(
+                's_title' => $x1,
+                's_content' => $x2
+            );
+            $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+            $db->where('row_key', $p);
+            $db->update(services, $data);
+            $_SESSION['think_mgs'] = '$.notify("Post Updated Successfully!", "success");';
+            header('Location: services.php');exit;
         }
   
     }
+}
+
+if(isset($_GET['post'])){
+    $p = $_GET['post'];
+    $eg = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+    $eg->where('row_key',$p);
+    $rap = $eg->getOne(services);
 }
 
 ?><!DOCTYPE html>
@@ -92,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
     <!-- Custom Styles-->
     <link href="assets/css/custom-styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/js/dataTables/dataTables.bootstrap.css">
+
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
@@ -120,7 +146,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
         <div id="page-wrapper">
             <div id="page-inner">
 
-
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
@@ -135,17 +160,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                         <!-- Advanced Tables -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Add New Blog
+                                Edit Blog
                             </div>
                             <div class="panel-body">
                                 <form class="form-inline" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     Subject
                                                 </span>
-                                                <input type="text" class="form-control" name="subject" value="" aria-label="...">
+                                                <input type="text" class="form-control" name="s_title" value="<?=$rap['s_title']?>" aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -153,12 +178,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="input-group">
-                                                <input type="file" name="blog_img"/>
-                                            </div><!-- /input-group -->
-                                        </div><!-- /.col-lg-6 -->
-                                        <div class="col-lg-6">
-                                            <div class="input-group">
-                                                <p></p>
+                                            <img class="img-thumbline" id="profile_picture" height="128" data-src="default.jpg" data-holder-rendered="true" width="180px" src="../img/service/<?=$rap['s_img']?>">
+                                            <br><p></p>
+                                                <input type="file" name="s_img"/>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -169,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                                                 <span class="input-group-addon">
                                                     Content
                                                 </span>
-                                                <textarea  class="form-control" id="editor" name="content"></textarea>
+                                                <textarea  class="form-control" id="editor" name="content"><?=$rap['s_content']?></textarea>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-12 -->
                                         <div class="col-lg-12">
@@ -177,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="input-group">
-                                                <input type="submit" class="form-control btn btn-primary" name="build" value="Save">
+                                                <input type="submit" class="form-control btn btn-primary" name="savei" value="Save">
                                             </div><!-- /input-group -->
                                         </div>
                                     </div><!-- /.row -->
@@ -197,6 +219,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
         </div>
         <!-- /. PAGE WRAPPER  -->
     </div>
+
+   
     <!-- /. WRAPPER  -->
 
     <!-- JS Scripts-->
@@ -206,18 +230,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['build'])){
     </script>
 
     <!-- jQuery Js -->
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <!--<script src="js/jquery-3.6.0.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
     <!-- Bootstrap Js -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="js/notify.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#dataTables-example').dataTable();
-        });
-    </script>
 
     <script>
         <?php if (isset($_SESSION['think_mgs'])) { echo $_SESSION['think_mgs']; unset($_SESSION['think_mgs']); }?>

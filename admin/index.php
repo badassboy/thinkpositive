@@ -55,7 +55,7 @@ require_once 'lib/MysqliDb.php';
                 <!-- /. ROW  -->
 
                 <div class="row">
-                    <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
                         <?php 
                             $nv = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
                             $nv->get(users);
@@ -71,7 +71,7 @@ require_once 'lib/MysqliDb.php';
                         </div>
                     </div>
                     
-                    <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
                         <?php 
                             $na = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
                             $na->get(messages);
@@ -87,7 +87,7 @@ require_once 'lib/MysqliDb.php';
                         </div>
                     </div>
                     
-                    <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
                         <?php 
                             $nb = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
                             $nb->get(blogs);
@@ -103,7 +103,7 @@ require_once 'lib/MysqliDb.php';
                         </div>
                     </div>
                     
-                    <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
                         <?php 
                             $nx = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
                             $nx->get(services);
@@ -115,6 +115,22 @@ require_once 'lib/MysqliDb.php';
                             </div>
                             <div class="panel-footer back-footer-brown">
                                 Service Posts
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <?php 
+                            $nx = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
+                            $nx->get(properties);
+                        ?>
+                        <div class="panel panel-primary text-center no-boder bg-color-info">
+                            <div class="panel-body">
+                                <i class="fa fa-home fa-5x"></i>
+                                <h3><?=$nx->count?></h3>
+                            </div>
+                            <div class="panel-footer back-footer-info">
+                                Properties On Sale
                             </div>
                         </div>
                     </div>

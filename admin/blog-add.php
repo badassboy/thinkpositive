@@ -25,7 +25,7 @@ function blogid(){
             return $vit;
         }elseif($barc < '99' && $barc >= '9'){
             return $vit;
-        }elseif($barc < '0999' && $barc >= '0099'){
+        }elseif($barc < '999' && $barc >= '99'){
             return $vit;
         }
     }

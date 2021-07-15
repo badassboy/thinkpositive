@@ -22,6 +22,8 @@ function headee(){
         return 'Contact';
     }elseif($s == 'abou'){
         return 'About';
+    }elseif($s == 'prop'){
+        return 'Properties';
     }else{
         return 'Travel & Tour';
     }
@@ -125,6 +127,7 @@ function headee(){
                     <a href="about.php" class="nav-item nav-link <?=nav_active('abou')?>">About</a>
                     <a href="service.php" class="nav-item nav-link <?=nav_active('serv')?>">Service</a>
                     <a href="blog.php" class="nav-item nav-link <?=nav_active('blog')?>">Blog</a>
+                    <a href="properties.php" class="nav-item nav-link <?=nav_active('prop')?>">Properties For Sale</a>
                     <a href="earn-commision.php" class="nav-item nav-link <?=nav_active('earn')?>">Earn A Commision</a>
                     <a href="contact.php" class="nav-item nav-link <?=nav_active('cont')?>">Contact</a>
 

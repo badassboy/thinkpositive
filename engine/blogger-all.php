@@ -5,10 +5,14 @@ function get_blogger($v, $c){
     $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
     $db->where('user_email', $v);
     $n = $db->getOne(users);
-    if($c == 'name'){
-        return $n['user_fname'].' '.$n['user_lname'];
-    }else if($c == 'id'){
-        return $n['row_key'];
+    if($db->count > 0){
+        if($c == 'name'){
+            return $n['user_fname'].' '.$n['user_lname'];
+        }else if($c == 'id'){
+            return $n['row_key'];
+        }
+    }else{
+        return 'Admin';
     }
 }
 

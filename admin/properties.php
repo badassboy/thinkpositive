@@ -8,7 +8,7 @@ include_once 'lib/check.php';
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services | <?=tp_app_admin?></title>
+    <title>Properties On Sale | <?=tp_app_admin?></title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -54,7 +54,7 @@ include_once 'lib/check.php';
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Services 
+                            Properties For Sale 
                         </h1>
                     </div>
                 </div>
@@ -65,8 +65,8 @@ include_once 'lib/check.php';
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Posted Services
-                            <button class="btn btn-sm btn-primary gap" onclick="window.location.href='service-add.php'"><i class="fa fa-plus "></i>Add a Service</button>
+                            Properties For Sale
+                            <button class="btn btn-sm btn-primary gap" onclick="window.location.href='prop-add.php'"><i class="fa fa-plus "></i>Add a Property</button>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -84,15 +84,15 @@ include_once 'lib/check.php';
                                     require_once 'lib/MysqliDb.php';
                                     $id = $_SESSION['think_id'];
                                     $iv = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
-                                    $ba = $iv->get(services);
+                                    $ba = $iv->get(properties);
                                     ?>
                                     <?php foreach($ba as $hi){ ?>
                                         <tr class="odd gradeX">
-                                            <td  width="25%"><b><?=$hi['s_title']?></b></td>
-                                            <td width="45%"><?=$hi['s_content']?></td>
-                                            <td class="center"><img src="../img/service/<?=$hi['s_img']?>" width="150px"></td>
+                                            <td  width="25%"><b><?=$hi['p_title']?></b></td>
+                                            <td width="45%"><?=$hi['p_content']?></td>
+                                            <td class="center"><img src="../img/property/<?=$hi['p_img']?>" width="150px"></td>
                                             <td class="text-center">
-                                                <button class="btn btn-sm btn-primary" onclick="window.location.href='service-edit.php?post=<?=$hi['row_key']?>'"><i class="fa fa-edit "></i></button>
+                                                <button class="btn btn-sm btn-primary" onclick="window.location.href='prop-edit.php?item=<?=$hi['row_key']?>'"><i class="fa fa-edit "></i></button>
                                                 <button class="btn btn-sm btn-danger conf-del" data-id="<?=$hi['row_key']?>" data-toggle="modal" data-target="#delModal"><i class="fa fa-trash-o "></i></button>
                                             </td>
                                         </tr>
@@ -150,7 +150,7 @@ include_once 'lib/check.php';
             });
 		    $(".bang").on('click', function (e) {
 		    	var id = $(this).attr('data-id');
-		    	location.href="del-srv.php?post="+id;
+		    	location.href="del-prop.php?item="+id;
 		    });
         });
     </script>

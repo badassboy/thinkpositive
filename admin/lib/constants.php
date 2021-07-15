@@ -18,3 +18,4 @@ define('users','tp_user');
 define('blogs','tp_blog');
 define('messages','tp_message');
 define('services','tp_service');
+define('properties','tp_property');

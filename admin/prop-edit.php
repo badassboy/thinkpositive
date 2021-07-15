@@ -12,14 +12,14 @@ function hook_data($h){
 	return htmlspecialchars(stripslashes($g));
 }
 
-function blogid(){
+function propid(){
     $db = new Mysqlidb(tp_host, tp_user, tp_pass, tp_name);
-    $db->orderBy('blog_count', 'DESC');
-    $arc = $db->get(blogs, 1); $mit = count($arc);
+    $db->orderBy('p_count', 'DESC');
+    $arc = $db->get(properties, 1); $mit = count($arc);
     if($mit === 0){
         return "1";
     }else{
-        $barc = substr($arc[0]['blog_count'], 5, 3);
+        $barc = substr($arc[0]['p_count'], 5, 3);
         $vit = $barc + 1;
         if($barc < 9 && $barc > 0){
             return $vit;
@@ -34,22 +34,24 @@ function blogid(){
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
 
-    $p = $_GET['post'];
+    $p = $_GET['item'];
     $prv = hook_data('prv_img');
-    $x1 = hook_data('subject');
+    $x1 = hook_data('title');
+    $x3 = hook_data('location');
+    $x4 = hook_data('price');
     $x2 = $_POST['content'];
 
     //Only when adding new
     // $df = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
     // $df->get(blogs);
 
-    if(isset($_FILES['blog_img'])){
+    if(isset($_FILES['p_img'])){
         $errors= array();
-        $file_name = $_FILES['blog_img']['name'];
-        $file_size = $_FILES['blog_img']['size'];
-        $file_tmp = $_FILES['blog_img']['tmp_name'];
-        $file_type = $_FILES['blog_img']['type'];
-        $exploded = explode('.', $_FILES['blog_img']['name']);
+        $file_name = $_FILES['p_img']['name'];
+        $file_size = $_FILES['p_img']['size'];
+        $file_tmp = $_FILES['p_img']['tmp_name'];
+        $file_type = $_FILES['p_img']['type'];
+        $exploded = explode('.', $_FILES['p_img']['name']);
         $file_ext = strtolower(end($exploded));
   
         $expensions= array("jpeg","jpg","png");
@@ -70,39 +72,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['savei'])){
         if(empty($errors)==true){
             //$b = $df->count + 1;
             $newfilename = $prv;
-            move_uploaded_file($file_tmp,"../img/blog/".$newfilename.".".$file_ext);
-            $stat = 1;
+            move_uploaded_file($file_tmp,"../img/property/".$newfilename.".".$file_ext);
 
             $data = array(
-                'blog_subj' => $x1,
-                'blog_img' => $newfilename.".".$file_ext,
-                'blog_content' => $x2
+                'p_title' => $x1,
+                'p_img' => $newfilename.".".$file_ext,
+                'p_content' => $x2,
+                'p_price' => $x4,
+                'p_location' => $x3
             );
             $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
             $db->where('row_key', $p);
-            $db->update(blogs, $data);
-            $_SESSION['think_mgs'] = '$.notify("Post Updated Successfully!", "success");';
-            header('Location: blog.php');exit;
+            $db->update(properties, $data);
+            $_SESSION['think_mgs'] = '$.notify("Item Updated Successfully!", "success");';
+            header('Location: properties.php');exit;
         }else{
             $data = array(
-                'blog_subj' => $x1,
-                'blog_content' => $x2
+                'p_title' => $x1,
+                'p_content' => $x2,
+                'p_price' => $x4,
+                'p_location' => $x3
             );
             $db = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
             $db->where('row_key', $p);
-            $db->update(blogs, $data);
-            $_SESSION['think_mgs'] = '$.notify("Post Updated Successfully!", "success");';
-            header('Location: blog.php');exit;
+            $db->update(properties, $data);
+            $_SESSION['think_mgs'] = '$.notify("Item Updated Successfully!", "success");';
+            header('Location: properties.php');exit;
         }
   
     }
 }
 
-if(isset($_GET['post'])){
-    $p = $_GET['post'];
+if(isset($_GET['item'])){
+    $p = $_GET['item'];
     $eg = new MysqliDb(tp_host, tp_user, tp_pass, tp_name);
     $eg->where('row_key',$p);
-    $rap = $eg->getOne(blogs);
+    $rap = $eg->getOne(properties);
 }
 
 ?><!DOCTYPE html>
@@ -170,9 +175,9 @@ if(isset($_GET['post'])){
                                         <div class="col-lg-6">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Subject
+                                                    Title
                                                 </span>
-                                                <input type="text" class="form-control" name="subject" value="<?=$rap['blog_subj']?>" aria-label="...">
+                                                <input type="text" class="form-control" name="title" value="<?=$rap['p_title']?>" aria-label="...">
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -180,10 +185,10 @@ if(isset($_GET['post'])){
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="input-group">
-                                            <img class="img-thumbline" id="profile_picture" height="128" data-src="default.jpg" data-holder-rendered="true" width="180px" src="../img/blog/<?=$rap['blog_img']?>">
-                                            <input type="hidden" name="prv_img" value="<?=$rap['blog_count']?>">
+                                            <img class="img-thumbline" id="profile_picture" height="128" data-src="default.jpg" data-holder-rendered="true" width="180px" src="../img/property/<?=$rap['p_img']?>">
+                                            <input type="hidden" name="prv_img" value="<?=$rap['p_count']?>">
                                             <br><p></p>
-                                                <input type="file" name="blog_img"/>
+                                                <input type="file" name="p_img"/>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
@@ -194,9 +199,31 @@ if(isset($_GET['post'])){
                                                 <span class="input-group-addon">
                                                     Content
                                                 </span>
-                                                <textarea  class="form-control" id="editor" name="content"><?=$rap['blog_content']?></textarea>
+                                                <textarea  class="form-control" id="editor" name="content"><?=$rap['p_content']?></textarea>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-12 -->
+                                        <div class="col-lg-12">
+                                            <p></p>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Location
+                                                </span>
+                                                <input type="text" class="form-control" name="location" value="<?=$rap['p_location']?>" aria-label="...">
+                                            </div><!-- /input-group -->
+                                        </div><!-- /.col-lg-6 -->
+                                        <div class="col-lg-12">
+                                            <p></p>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    Price
+                                                </span>
+                                                <input type="text" class="form-control" name="price" value="<?=$rap['p_price']?>" aria-label="...">
+                                            </div><!-- /input-group -->
+                                        </div><!-- /.col-lg-6 -->
                                         <div class="col-lg-12">
                                             <p></p>
                                         </div>
@@ -222,6 +249,8 @@ if(isset($_GET['post'])){
         </div>
         <!-- /. PAGE WRAPPER  -->
     </div>
+
+   
     <!-- /. WRAPPER  -->
 
     <!-- JS Scripts-->

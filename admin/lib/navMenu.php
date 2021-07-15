@@ -23,6 +23,9 @@ function nav_active($n){
                         <a <?=nav_active('serv')?> href="services.php"><i class="fa fa-cog"></i> Services</a>
                     </li>
                     <li>
+                        <a <?=nav_active('prop')?> href="properties.php"><i class="fa fa-home"></i> Properties For Sales</a>
+                    </li>
+                    <li>
                         <a <?=nav_active('user')?> href="users.php"><i class="fa fa-users"></i> Users</a>
                     </li>
                 </ul>

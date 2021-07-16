@@ -16,7 +16,7 @@ function state($v){
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services | <?=tp_app_admin?></title>
+    <title>Users | <?=tp_app_admin?></title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -26,12 +26,6 @@ function state($v){
     <link rel="stylesheet" href="assets/js/dataTables/dataTables.bootstrap.css">
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
-    <style>
-        .gap {
-            float: right;
-        }
-    </style>
 </head>
 
 <body>
@@ -62,7 +56,7 @@ function state($v){
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Blog 
+                            Users 
                         </h1>
                     </div>
                 </div>
@@ -73,8 +67,7 @@ function state($v){
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Posted Blogs
-                            <button class="btn btn-sm btn-primary gap" onclick="window.location.href='service-add.php'"><i class="fa fa-plus "></i>Add a Service</button>
+                            Admin Users
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

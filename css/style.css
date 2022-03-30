@@ -122,7 +122,11 @@
 .custom-nav {
     background-color:  #000000;
     /*background-color: yellow;*/
-    /*max-height: 30px;*/
+    height: 140px;
+}
+
+.navbar-brand img {
+    margin-top: -8%;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -157,6 +161,8 @@
     background: rgba(4, 15, 40, .7);
     z-index: 1;
 }
+
+
 
 .carousel-item img {
     max-width: 100%;

@@ -73,7 +73,7 @@
             <a href="index.php" class="navbar-brand">
                 <!-- <h1 class="m-0 display-4 text-uppercase text-white">
                     <i class="bi bi-building text-primary me-2"></i>WEBUILD</h1> -->
-                <img src="img/logo2.jpg" width="100" height="100" alt="logo">
+                <img src="img/logo12.png" width="150" height="150" alt="logo">
                 <!-- <img src="img/logo2.jpg" class="img-fluid" alt="Responsive image"> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -84,6 +84,9 @@
                     <a href="index.php" class="nav-item nav-link active">Home</a>
                     <a href="about.php" class="nav-item nav-link">About</a>
                     <a href="service.php" class="nav-item nav-link">Service</a>
+                    <a href="team.php" class="nav-item nav-link">Team</a>
+                    <a href="faq.php" class="nav-item nav-link">FAQ</a>
+                    <a href="properties.php" class="nav-item nav-link">Properties</a>
                     <a href="blog.php" class="nav-item nav-link">Blog</a>
 
                    <!--  <div class="nav-item dropdown">

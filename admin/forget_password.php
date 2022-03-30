@@ -1,3 +1,16 @@
+<?php  
+
+include("../functions.php");
+$ch = new Business();
+
+
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +21,7 @@
 
 	<title></title>
 
-	<link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
 
 	<link rel="stylesheet" type="text/css" href="css/forget_password.css">
 
@@ -40,6 +53,6 @@
 
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

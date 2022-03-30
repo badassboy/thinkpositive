@@ -1,33 +1,32 @@
 <?php
-
+session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once("../functions.php");
-$ch = new Application();
+$ch = new Business();
 
 $info = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['login'])) {
 
 
-	$email = trim($_POST['email']);
+	$username = trim($_POST['username']);
 	$pwd = trim($_POST['pwd']);
 	
-	if (!empty($email) || !empty($pwd)) {
+	if (!empty($username) || !empty($pwd)) {
 
-		$user = $ch->loginAdmin($email,$pwd);
+		$user = $ch->loginAdmin($username,$pwd);
 		if ($user) {
-			$_SESSION['email']=$email;
-			$_SESSION['adimn_pass']=$pwd;
+			$_SESSION['username']=$username;
 			header("Location: homepage.php");
 			// return;
 		}else{
-			$info = "login failed";
+			$info = '<div class="alert alert-danger" role="alert">Login failed</div>';
 		}
 
 	}else {
 
-		$info = "fields are required";	
+		$info = '<div class="alert alert-danger" role="alert">Fields required</div>';;	
 		
 		
 
@@ -53,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	<title></title>
 
-	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/admin-index.css">
 </head>
 <body>
@@ -61,16 +60,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- login page here -->
 	<div class="container-fluid auth_page">
 
-		<!-- <div class="container-fluid header">
+		<div class="container-fluid header">
 
 			<h1>ADMIN LOGIN</h1>
 		
-		</div> -->
+		</div>
 
 			<h3>LOGIN HERE</h3>
 			    <div class="second">
 			    	
-			    	<form method="post" action="index.php">
+			    	<form method="post" action="">
 			    		<?php
 
 			    		if (isset($info)) {
@@ -79,13 +78,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 			    		?>
 			    	  <div class="form-group">
-			    	      <label for="exampleInputEmail1">Email address</label>
-			    	      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+			    	      <label for="exampleInputEmail1">Username(*)</label>
+			    	      <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
 			    	      
 			    	    </div>
 
 			    	  <div class="form-group">
-			    	    <label for="exampleInputPassword1">Password</label>
+			    	    <label for="exampleInputPassword1">Password(*)</label>
 			    	    <input type="password" name="pwd" class="form-control" id="exampleInputPassword1" placeholder="Password" required="required">
 			    	  </div>
 
@@ -94,7 +93,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			    	 <input type="submit" name="login" class="default" value="Login">
 
 			    	  <br>
-			    	  <p class="next">Not Registered?<a href="admin-signup.php" style="color: #009933;">Click Here</a></p>
+			    	  <p class="next">Forget Password?<a href="forget_password.php" style="color: #009933;">Click Here</a></p>
+			    	  <p class="next">Not Registered?<a href="admin-signup.php" style="color: #009933;">SignUp</a></p>
 			    	</form>
 			    </div>
 

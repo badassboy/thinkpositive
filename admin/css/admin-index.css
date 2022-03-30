@@ -20,7 +20,7 @@ dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tf
 
 .auth_page {
 	background-color: #f5f5f5;
-	height: 500px;
+	height: 900px;
 }
 
 .auth_page h3 {
@@ -29,7 +29,7 @@ dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tf
 	font-weight: bolder;
 }
 
-/*.header{
+.header{
 	background:#ffffff;
 	height: 80px;
 }
@@ -38,7 +38,7 @@ dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tf
 	padding-top: 3%;
 	padding-left: 25%;
 	font-weight: bolder;
-}*/
+}
 
 
 

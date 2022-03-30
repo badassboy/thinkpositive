@@ -1,10 +1,3 @@
-<?php
-
-
-
-
-?>
-
 
 <?php include("header.php"); ?>
 
@@ -13,8 +6,8 @@
     <div class="container-fluid p-0">
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100 h-100" src="img/dreamhouse.jpg" alt="dreamhouse">
+                <div class="carousel-item active" style="height:550px;">
+        <img class="w-100 h-100" src="img/dreamhouse.jpg" alt="dreamhouse">
 
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
@@ -26,7 +19,7 @@
 
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/landslider.jpg" alt="landslider">
+                    <img class="w-100" src="img/landslider.jpg" alt="landslider" style="height:550px;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                     
@@ -322,7 +315,7 @@
 
 
     <!-- Team Start -->
-    <!-- <div class="container-fluid py-6 px-5">
+    <div class="container-fluid py-6 px-5">
         <div class="text-center mx-auto mb-5" style="max-width: 600px;">
             <h2 class="display-7 text-uppercase mb-4">Expert Team Members</h2>
         </div>
@@ -331,7 +324,7 @@
                 <div class="row g-0">
                     <div class="col-10" style="min-height: 300px;">
                         <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100" src="img/team-1.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/about3.jpg" style="object-fit: cover;">
                         </div>
                     </div>
                     <div class="col-2">
@@ -345,7 +338,7 @@
                     </div>
                     <div class="col-12">
                         <div class="bg-light p-4">
-                            <h4 class="text-uppercase">Adam Phillips</h4>
+                            <h4 class="text-uppercase">Derrick Gyan</h4>
                             <span>CEO & Founder</span>
                         </div>
                     </div>
@@ -355,7 +348,7 @@
                 <div class="row g-0">
                     <div class="col-10" style="min-height: 300px;">
                         <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100" src="img/team-2.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/samuel.jpeg" style="object-fit: cover;">
                         </div>
                     </div>
                     <div class="col-2">
@@ -369,8 +362,8 @@
                     </div>
                     <div class="col-12">
                         <div class="bg-light p-4">
-                            <h4 class="text-uppercase">Dylan Adams</h4>
-                            <span>Civil Engineer</span>
+                            <h4 class="text-uppercase">Samuel Twene</h4>
+                            <span>Operations Manager</span>
                         </div>
                     </div>
                 </div>
@@ -379,7 +372,7 @@
                 <div class="row g-0">
                     <div class="col-10" style="min-height: 300px;">
                         <div class="position-relative h-100">
-                            <img class="position-absolute w-100 h-100" src="img/team-3.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/henry.jpeg" style="object-fit: cover;">
                         </div>
                     </div>
                     <div class="col-2">
@@ -393,8 +386,8 @@
                     </div>
                     <div class="col-12">
                         <div class="bg-light p-4">
-                            <h4 class="text-uppercase">Jhon Doe</h4>
-                            <span>Interior Designer</span>
+                            <h4 class="text-uppercase">Henry Attakorah</h4>
+                            <span>Managing partner,Germany</span>
                         </div>
                     </div>
                 </div>
@@ -424,7 +417,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- Team End -->
 
 

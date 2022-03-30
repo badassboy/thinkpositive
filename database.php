@@ -6,7 +6,7 @@ define('USER', 'root');
 // user password
 define('PASSWORD', '');
 // database localhost name
-define('DATABASE', 'thinking');
+define('DATABASE', 'thinkpositive');
 
 function DB()
 {

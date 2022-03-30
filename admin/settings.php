@@ -1,17 +1,82 @@
 <?php
-
 session_start();
-require("../database.php");
-// $dbh = DBCreate();
+include("../functions.php");
+$ch = new Business();
 
-// Displaying admin info into the table
-$dbh = DB();
+if(isset($_POST['info'])){
+    
+    if (isset($_SESSION['username'])) {
+
+         $email = $ch->testInput($_POST['email']);
+         // echo $email;
+      
+  
+  if(empty($email)){
+    $msg = '<div class="alert alert-danger" role="alert">Please all fields are required</div>';
+  }else {
+    $updated = $ch->updateInfo($email,$_SESSION['username']);
+    if($updated){
+      $msg = '<div class="alert alert-success" role="alert">Info  uploaded</div>';
+    }else {
+      $msg = '<div class="alert alert-danger" role="alert">Failed in updating info</div>';
+    }
+
+}
+
+}else {
+    echo "session not set";
+}
+
+        
+}
+// end of updating info
+
+
+// updating password
+if (isset($_POST['update'])) {
+    if (isset($_SESSION['username'])) {
+        $password = $_POST['new_password'];
+        $confirm_password = $_POST['cpwd'];
+
+        if (empty($password) || empty($confirm_password)) {
+            $msg = '<div class="alert alert-danger" role="alert">Fields required</div>';
+            
+        }else {
+            $updated = $ch->updatePassword($password,$confirm_password,$_SESSION['username']);
+            if($updated){
+            $msg = '<div class="alert alert-success" role="alert">Password Updated</div>';
+            }else {
+              $msg = '<div class="alert alert-danger" role="alert">Failed in updating password</div>';
+            }
+        }
+    }
+}
+
+// delete account
+if (isset($_POST['account'])) {
+    if (isset($_SESSION['username'])) {
+        $deleted = $ch->deleteAccount($_SESSION['username']);
+        if($deleted){
+            $msg = '<div class="alert alert-success" role="alert">Password Updated</div>';
+            }else {
+              $msg = '<div class="alert alert-danger" role="alert">Failed in updating password</div>';
+            }
+
+    }
+    
+}
+
+
+
+
 
 ?>
 
 
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +85,7 @@ $dbh = DB();
     <title>Collapsible sidebar using Bootstrap 4</title>
 
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" type="text/css" href="../bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
 
     
 
@@ -30,7 +95,6 @@ $dbh = DB();
     <!-- Font Awesome -->
     <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
 
-
     <style type="text/css">
 
         *{
@@ -39,16 +103,28 @@ $dbh = DB();
             box-sizing: border-box;
         }
 
-        #addUser{
+        .appointment{
                 background-color:rgb(255, 255, 255);
-                height: 350px;
+                height: 500px;
                 padding-top: 3%;
                 display: none;
             }
 
-     
+        .event{
+                background-color:rgb(255, 255, 255);
+                height: 500px;
+                padding-top: 3%;
+                display: none;
+            }
 
-        #admin_table{
+            .account{
+                background-color:rgb(255, 255, 255);
+                height: 500px;
+                padding-top: 3%;
+                display: none;
+            }
+
+        .counselling{
 
             background-color:rgb(255, 255, 255);
             height: 350px;
@@ -56,56 +132,57 @@ $dbh = DB();
             display: none;
         }
 
-        .btn-primary {
-          margin-left: 1%;
-          margin-right: 3%;
-          width: 20%;
+        .show {
+          display: block;
+        }
+
+
+        button[type="submit"]{
+            width: 60%;
+            margin-left: 30%;
         }
 
 
     </style>
+    
 
 </head>
 
-
-
-
-  
-
-
 <body>
-      <div class="wrapper">
+    <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+                <h3>ATSPO</h3>
             </div>
 
-            <!-- storing div name in hidden input -->
-            <input type="hidden" name="" id="tempDivName">
-
             <ul class="list-unstyled components">
+                <p>Settings</p>
 
-                <li>
-                    <a href="#" id="addButton"  onclick="MyFunction('addUser')">Add Admin</a>
-                </li>
 
-               
-                <li>
-                    <a href="#" id="all_admin"  onclick="MyFunction('admin_table')">All Admin</a>
-                </li>
-               
+            <li>
+                <a href="#" id="appointment" data-target="one" class="test">Business Info</a>
+            </li>
+
+            <li>
+                <a href="#" id="event" data-target="two" class="test">Password</a>
+            </li>
+
+             <li>
+                <a href="#" id="account" data-target="three" class="test">Delete Account</a>
+            </li>
+
+         
+           
+           
+
+
             </ul>
-
-              
-        </nav>
-        <!-- end of sidebar -->
-
-
-
 
            
 
+        </nav>
+        <!-- end of sidebar -->
 
         <!-- Page Content  -->
         <div id="content">
@@ -126,108 +203,97 @@ $dbh = DB();
                 </div>
             </nav>
 
-            <h2>Admin Settings</h2>
+            <!-- <h2>Contact</h2> -->
 
-            <div class="container" id="addUser">
-              <div id="response"></div>
-                    <h5>Add Admin</h5>
-               <form method="post"  action="add_user.php" id="add_user">
+            <div class="container appointment show" id="one">
+              <!-- <div id="message"></div> -->
+              <?php
+                if(isset($msg)){
+                  echo $msg;
+                }
+              ?>
+                <h5>Contact</h5>
+               <form method="post" id="appoint">
 
-                <div class="form-row">
-                    
-                  <div class="form-group col-md-4">
-                   <label for="usernameInput">Username</label>
-                   <input type="text" name="username" class="form-control" id="usernameInput" required="required"
-                   placeholder="username">
-                    </div>
-
-                <div class="form-group col-md-4">
-                 <label for="usernameInput">FullName</label>
-                 <input type="text" name="fullname" class="form-control" id="usernameInput" required="required"
-                 placeholder="username">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email</label>
+    <input type="email"  name="email" class="form-control" placeholder="Email" required>
                   </div>
 
+            <!-- <div class="form-group">
+                <label for="exampleFormControlInput1">Username</label>
+    <input type="text"  name="username" class="form-control"  placeholder="Username" required>
+              </div> -->
 
-                  <div class="form-group col-md-4">
-                   <label for="usernameInput">Email</label>
-                   <input type="email" name="email" class="form-control" id="usernameInput" required="required"
-                   placeholder="username">
-                    </div>
-
-                </div>
-                <!-- end of row 1 -->
-
-                <!--  row 2 -->
-                <div class="form-row">
-                    
-                  <div class="form-group col-md-6">
-                  <label>Admin Type</label>
-                  <select class="form-control" name="admin_type" required="required">
-                    <option>Super Admin</option>
-                    <option>Branch Admin</option>
-                    <option>Group Admin</option>
-                  </select>
-                    </div>
-
-                <div class="form-group col-md-6">
-                 <label>Date</label>
-                 <input class="form-control" name="date_a" type="date" id="example-date-input" required="required">
-                  </div>
-
-                </div>
-                <!-- end of row 2 -->
-
-                 <button type="submit" class="btn btn-primary">Add User</button>
-
+                <button type="submit" class="btn btn-primary" name="info">Update</button>
                </form> 
             </div>
-                      
+               
+
                 
+                <div class="container event" id="two">
 
+                    <?php
+                if(isset($msg)){
+                  echo $msg;
+                }
+              ?>
 
+              <form method="post" id="appoint">
 
+               <div class="form-group">
+                   <label for="exampleFormControlInput1">New Password</label>
+   <input type="password"  name="new_password" class="form-control" placeholder="New Password" required>
+                 </div>
 
+           <div class="form-group">
+               <label for="exampleFormControlInput1">Confirm Pasword</label>
+   <input type="password"  name="cpwd" class="form-control"  placeholder="Confirm Password" required>
+             </div>
 
-                  
-
-          <div class="container" id="admin_table">
-              <h5>Administrators</h5>
+               <button type="submit" class="btn btn-primary" name="update">Update</button>
+              </form> 
               
-                  <table class="table">
-
-                    <thead>
-                      <tr>
-                        <th scope="col">Action</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">FullName</th>
-                        <th scope="col">Email Address</th>
-                        <th scope="col">Date</th>
-                      </tr>
-                    </thead>
-
-                    <tbody></tbody>
-                    
-                  </table>
-                    
             </div>
-            <!-- end of table -->
+
+            <div class=" container account" id="three">
+                <?php 
+
+                if (isset($msg)) {
+                    echo $msg;
+                }
+
+                ?>
+                <form method="post">
+                    <p>You will not be able to log in to your profile anymore and all your account history will be deleted without the possibility to restore</p>
+
+                <button type="submit" class="btn btn-primary" name="account">DELETE ACCOUNT</button>
+                </form>
+
+                
+                
+            </div>
+                
+<!-- end of div -->
 
         </div>
         <!-- end of  content -->
-
-
-
-                    
-
            
     </div>
     <!-- end of wrapper -->
 
-    <!-- jQuery CDN  -->
+    
+   
+
+
+
+
+
+<!-- jQuery CDN  -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    
     <!-- Bootstrap JS -->
-   <script type="text/javascript" src="../bootstrap/dist/js/bootstrap.js"></script>
+   <script type="text/javascript" src="bootstrap/dist/js/bootstrap.js"></script>
 
     <script type="text/javascript">
 
@@ -237,105 +303,32 @@ $dbh = DB();
             });
         });
 
-        // this function is used to display div based 
-        // link clicked
-      function MyFunction(divName){
+        // creating an array-like based of child nodes on a specified class name
+        var links = document.getElementsByClassName("test");
 
-        //hidden val
-        var hiddenVal = document.getElementById("tempDivName"); 
-
-        //hide old
-        if(hiddenVal.Value != undefined){
-            var oldDiv = document.getElementById(hiddenVal.Value); 
-            oldDiv.style.display = 'none'; 
+     //attach click handler to each
+        for (var i = 0; i < links.length; i++) {
+            links[i].onclick = toggleVisible;
         }
 
-        //show div
-            var tempDiv = document.getElementById(divName); 
-            tempDiv.style.display = 'block';              
-
-        //save div ID
-            hiddenVal.Value = document.getElementById(divName).getAttribute("id");
-
+        function toggleVisible(){
+                //hide currently shown item
+               document.getElementsByClassName('show')[0].classList.remove('show');
+               // getting info from custom data-target  set on the element
+               var id = this.dataset.target;
+               // showing div
+               document.getElementById(id).classList.add('show');
         }
 
-      
-        // ajax form submission
-        $(document).ready(function(){
+       
 
-          $("#add_user").submit(function(e){
-            e.preventDefault();
-            $.ajax({
-              type:"post",
-              url:"add_user.php",
-              data:$("#add_user").serialize(),
-            })
-
-            .done(function(data){
-              $("#response").html(data);
-              console.log("hello");
-
-            })
-            .fail(function(data){
-              $("#response").html(data);
-
-            });
-                // clear the form input after submission
-              $("#add_user").find('input').val(" ");
-          });
-          // end of form submission
-        });
+   
+              
 
 
-        // ajax code for displaying admins
-        $(document).ready(function(){
+        
 
-              $.ajax({
-                url:"adminajax.php",
-                type:"get",
-                dataType:"JSON",
-                success:function(response){
-                  console.log(response);
-                    var len = response.length;
-                    for (var i = 0; i < len; i++) {
-
-
-                        var action = '<a><i class="fa fa-trash" aria-hidden="true"></i></a>';
-                        var username = response[i]["username"];
-
-                        var fullname = response[i]["fullname"];
-                        var email = response[i]["email"];
-                        var my_date = response[i]["admin_date"];
-
-                        var table_str = "<tr>" +
-                                     "<td>" + action + "</td>" +
-                                     "<td>" + username + "</td>" +
-                                     "<td>" + fullname + "</td>" +
-                                     "<td>" + email + "</td>" +
-                                     "<td>" + my_date + "</td>" +
-                                     "</tr>";
-
-
-                             $(".table tbody").append(table_str);
-
-                       
-                    }
-                },
-                error:function(response){
-                    console.log("Error: "+ response);
-                }
-              });
-
-        });
-
-
-         
-    </script>
-</body>
-</html>
-
-
-
+           
 
 
 
@@ -345,3 +338,7 @@ $dbh = DB();
         
 
 
+    </script>
+</body>
+
+</html>
